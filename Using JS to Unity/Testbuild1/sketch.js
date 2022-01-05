@@ -13,10 +13,24 @@ function setup() {
   createCanvas(640, 480);
   video = createCapture(VIDEO);
   video.hide();
-  poseNet = ml5.poseNet(video, modelLoaded);
+
+  const poseNetOptions = {
+    architecture: 'MobileNetV1',
+    imageScaleFactor: 0.3,
+    outputStride: 16,
+    flipHorizontal: false,
+    minConfidence: 1,
+    maxPoseDetections: 5,
+    scoreThreshold: 0.5,
+    nmsRadius: 20,
+    detectionType: 'single',
+    inputResolution: 513,
+    multiplier: 0.75,
+    quantBytes: 2,
+  };
+
+  poseNet = ml5.poseNet(video, poseNetOptions, modelLoaded);
   poseNet.on('pose', gotPoses);
-  // var pos = {x:1,y:2,z:3};
-  // gameInstance.SendMessage("DataReciiver","TestJson", JSON.stringify(pos));
 }
 
 function gotPoses(poses) {
@@ -29,6 +43,7 @@ function gotPoses(poses) {
 }
 
 function modelLoaded() {
+
   console.log('poseNet ready');
 }
 
@@ -57,6 +72,7 @@ function draw() {
   image(video, 0, 0);
 
   if (pose) {
+    
     let eyeR = pose.rightEye;
     let eyeL = pose.leftEye;
     let d = dist(eyeR.x, eyeR.y, eyeL.x, eyeL.y);
@@ -66,17 +82,51 @@ function draw() {
     ellipse(pose.rightWrist.x, pose.rightWrist.y, 32);
     ellipse(pose.leftWrist.x, pose.leftWrist.y, 32);
 
-    // var posN = {x:pose.nose.x,y:pose.nose.y,z:d};
-    // var jsonString = JSON.stringify(posN);
-    // GlobalUnityInstance.SendMessage("DataReciiver","setNoseData", jsonString);
-
-    for (let i = 0; i < pose.keypoints.length; i++) {
-      var pos = {length:pose.keypoints.length, i:pose.keypoints[i], x:pose.keypoints[i].position.x, y:pose.keypoints[i].position.y, z:d};
-      var posJsonString = JSON.stringify(pos);
-      GlobalUnityInstance.SendMessage("DataReciiver","setNoseData", posJsonString);
+    if(pose.keypoints[0].score > 0.7){
+      var pos0 = {x:pose.nose.x,y:pose.nose.y,z:d};
+      GlobalUnityInstance.SendMessage("DataReciiver","setNoseData", JSON.stringify(pos0));
     }
-
-
+    // if(pose.keypoints[1].score > 0.3){
+    //   var pos1 = {x:pose.leftEye.x,y:pose.leftEye.y,z:d};
+    //   GlobalUnityInstance.SendMessage("DataReciiver","setNoseData1", JSON.stringify(pos1));
+    // }
+    // if(pose.keypoints[2].score > 0.3){
+    //   var pos2 = {x:pose.rightEye.x,y:pose.rightEye.y,z:d};
+    //   GlobalUnityInstance.SendMessage("DataReciiver","setNoseData2", JSON.stringify(pos2));
+    // }
+    // if(pose.keypoints[3].score > 0.3){
+    //   var pos3 = {x:pose.leftEar.x,y:pose.leftEar.y,z:d};
+    //   GlobalUnityInstance.SendMessage("DataReciiver","setNoseData3", JSON.stringify(pos3));
+    // }
+    // if(pose.keypoints[4].score > 0.3){
+    //   var pos4 = {x:pose.rightEar.x,y:pose.rightEar.y,z:d};
+    //   GlobalUnityInstance.SendMessage("DataReciiver","setNoseData4", JSON.stringify(pos4));
+    // }
+    // if(pose.keypoints[5].score > 0.3){
+    //   var pos5 = {x:pose.leftShoulder.x,y:pose.leftShoulder.y,z:d};
+    //   GlobalUnityInstance.SendMessage("DataReciiver","setNoseData5", JSON.stringify(pos5));
+    // }
+    // if(pose.keypoints[6].score > 0.3){
+    //   var pos6 = {x:pose.rightShoulder.x,y:pose.rightShoulder.y,z:d};
+    //   GlobalUnityInstance.SendMessage("DataReciiver","setNoseData6", JSON.stringify(pos6));
+    // }
+    // if(pose.keypoints[7].score > 0.3){
+    //   var pos7 = {x:pose.leftElbow.x,y:pose.leftElbow.y,z:d};
+    //   GlobalUnityInstance.SendMessage("DataReciiver","setNoseData7", JSON.stringify(pos7));
+    // }
+    // if(pose.keypoints[8].score > 0.3){
+    //   var pos8 = {x:pose.rightElbow.x,y:pose.rightElbow.y,z:d};
+    //   GlobalUnityInstance.SendMessage("DataReciiver","setNoseData8", JSON.stringify(pos8));
+    // }
+    // if(pose.keypoints[9].score > 0.3){
+    //   var pos9 = {x:pose.leftWrist.x,y:pose.leftWrist.y,z:d};
+    //   GlobalUnityInstance.SendMessage("DataReciiver","setNoseData9", JSON.stringify(pos9));
+    // }
+    // if(pose.keypoints[10].score > 0.3){
+    //   var pos10 = {x:pose.rightWrist.x,y:pose.rightWrist.y,z:d};
+    //   GlobalUnityInstance.SendMessage("DataReciiver","setNoseData10", JSON.stringify(pos10));
+    // }
+  
     for (let i = 0; i < pose.keypoints.length; i++) {
       let x = pose.keypoints[i].position.x;
       let y = pose.keypoints[i].position.y;
