@@ -9,7 +9,8 @@ public class DataReciiver : MonoBehaviour
 
     public GameObject[] keyPoints = new GameObject[17];
     public GameObject WholeBody; 
-    public Text text;
+    public Text textright;
+    public Text textleft;
 
     // Start is called before the first frame update
     void Start()
@@ -27,8 +28,7 @@ public class DataReciiver : MonoBehaviour
     {
         //var position = JsonUtility.FromJson<Vector3>(data);
         jsonObject1 pointsData = JsonUtility.FromJson<jsonObject1>(data);
-        text.text = "nn" + pointsData.x +"sdf" + pointsData.y+ "sdf"+pointsData.z;
-        keyPoints[0].transform.position = new Vector3(pointsData.x/100, pointsData.y/100, pointsData.z/10);
+        keyPoints[0].transform.position = new Vector3(pointsData.x, pointsData.y, pointsData.z);
     }
     public void setNoseData1(string data)
     {
@@ -76,12 +76,14 @@ public class DataReciiver : MonoBehaviour
     public void setNoseData9(string data)
     {
         jsonObject10 pointsData1 = JsonUtility.FromJson<jsonObject10>(data);
-        keyPoints[9].transform.position = new Vector3(pointsData1.x/100, pointsData1.y/100, pointsData1.z/10);
+        keyPoints[9].transform.position = new Vector3(pointsData1.x, pointsData1.y, pointsData1.z);
+        textright.text = "left - x " + pointsData1.x +" y " + pointsData1.y+ " z "+pointsData1.z;
     }
     public void setNoseData10(string data)
     {
         jsonObject11 pointsData1 = JsonUtility.FromJson<jsonObject11>(data);
-        keyPoints[10].transform.position = new Vector3(pointsData1.x/100, pointsData1.y/100, pointsData1.z/10);
+        keyPoints[10].transform.position = new Vector3(pointsData1.x, pointsData1.y, pointsData1.z);
+        textleft.text = "right - x " + pointsData1.x +" y " + pointsData1.y+ " z "+pointsData1.z*100;
     }
 
 

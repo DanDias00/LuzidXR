@@ -6,9 +6,22 @@
     <title>Unity WebGL Player | Javascript</title>
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
-    <script src="https://cdn.jsdelivr.net/npm/p5@1.4.0/lib/p5.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/p5@1.4.0/lib/addons/p5.sound.min.js"></script>
-  <script src="https://unpkg.com/ml5@0.4.2/dist/ml5.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils@0.1/drawing_utils.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/holistic@0.1/holistic.js" crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/control_utils/control_utils.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/pose/pose.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.4.0/lib/p5.js" crossorigin="anonymous"></script>
+
+    <script src="blazepose.js" defer></script>
+    <script src="sketch.js" defer></script>
+
+    <link rel="stylesheet" href="style.css">
+
+
   </head>
   <body>
     <div id="unity-container" class="unity-desktop">
@@ -26,6 +39,11 @@
         <div id="unity-build-title">Javascript</div>
       </div>
     </div>
+    
+    <div class="container">
+      <video class="input_video"></video>
+    </div>
+
     <script>
       var container = document.querySelector("#unity-container");
       var canvas = document.querySelector("#unity-canvas");
@@ -121,6 +139,6 @@
       };
       document.body.appendChild(script);
     </script>
-    <script src="sketch.js"></script>
   </body>
 </html>
+
