@@ -5,36 +5,56 @@ using UnityEngine.Video;
 
 public class VideoRender : MonoBehaviour
 {
-    public RenderTexture videoTexture;
-
     public GameObject videoScreen;
+    WebCamTexture _webcamTexture;
+    bool _enabled;
 
-    // The height of the current video source
-    private int videoHeight;
-
-    // The width of the current video source
-    private int videoWidth;
-
-    // Live video input from a webcam
-    private WebCamTexture webcamTexture;
-    public Vector2Int webcamDims = new Vector2Int(1280, 720);
-    public int webcamFPS = 60;
-
-    void Start()
+    public void Enable()
     {
-        startWebCam ();
+        _enabled = true;
     }
 
-    void update()
+    public void Disable()
     {
-        //Graphics.Blit(webcamTexture, videoTexture);
+        disableCamera();
     }
-    void startWebCam() {
-        WebCamDevice device = WebCamTexture.devices[0];
 
-        webcamTexture = new WebCamTexture (device.name);
-        videoScreen.gameObject.GetComponent<MeshRenderer>().material.SetTexture("_MainTex", webcamTexture);
-        //videoTexture.material.mainTexture = webcamTexture;
-        webcamTexture.Play ();
+    #region MONOBEHAVIOUR
+
+    void Update()
+    {
+        if(_enabled)
+        {
+            if(_webcamTexture == null)
+            {
+                while(!Application.RequestUserAuthorization(UserAuthorization.WebCam).isDone)
+                {
+                    return;
+                }
+                if (Application.HasUserAuthorization(UserAuthorization.WebCam)) 
+                {
+                    //Webcam authorized
+                    _webcamTexture = new WebCamTexture (WebCamTexture.devices[0].name);
+                    _webcamTexture.Play (); 
+                } 
+                else 
+                {
+                    // Webcam NOT authorized
+                }   
+            }
+            else if (_webcamTexture.isPlaying)
+            {
+                if(_webcamTexture.didUpdateThisFrame)
+                {                    
+                    videoScreen.gameObject.GetComponent<MeshRenderer>().material.SetTexture("_MainTex", _webcamTexture);
+                }
+            }
+        }
+    }
+    #endregion
+
+    public void disableCamera()
+    {
+        
     }
 }

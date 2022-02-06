@@ -28,16 +28,28 @@ const camera = new Camera(videoElement, {
 
 camera.start();
 
-// setInterval(function(){ 
-// }, 100);
-let one = {handposeValues: {one :{x:0,y:0,z:0}}};
 
+let one = {handposeValues: {one :{x:0,y:0,z:0}}};
+// setInterval(function(){ 
+//   if (landmarks && landmarks.length) {
+//     for (let i = 0; i < landmarks.length; i++) {
+//       one.handposeValues["data"+i] = {x:30*landmarks[i].x, y:16.875*landmarks[i].y, z:10*landmarks[i].z, w:landmarks[i].visibility}
+//       GlobalUnityInstance.SendMessage("DataReceiver","keypointData", JSON.stringify(one.handposeValues));
+//     }
+//     var d = dist(landmarks[2].x, landmarks[2].y, landmarks[5].x, landmarks[5].y);
+//     var distance = {scale:d*20};
+//     GlobalUnityInstance.SendMessage("DataReceiver","dist", JSON.stringify(distance));
+//   }
+// }, 100);
 function draw(){
   if (landmarks && landmarks.length) {
     for (let i = 0; i < landmarks.length; i++) {
-      one.handposeValues["data"+i] = {x:10*landmarks[i].x, y:10*landmarks[i].y, z:1*landmarks[i].z}
+      one.handposeValues["data"+i] = {x:30*landmarks[i].x, y:16.875*landmarks[i].y, z:10*landmarks[i].z, w:landmarks[i].visibility}
       GlobalUnityInstance.SendMessage("DataReceiver","keypointData", JSON.stringify(one.handposeValues));
     }
+    var d = dist(landmarks[2].x, landmarks[2].y, landmarks[5].x, landmarks[5].y);
+    var distance = {scale:d*20};
+    GlobalUnityInstance.SendMessage("DataReceiver","dist", JSON.stringify(distance));
   }
 }
 
@@ -46,17 +58,3 @@ function draw(){
     // var lShouly = 10*landmarks[11].y;
     // var lShoul = {x:lShoulx, y:lShouly, z:1*landmarks[11].z};
     // GlobalUnityInstance.SendMessage("DataReciiver","keypointData11", JSON.stringify(lShoul));
-    // var rShoulx = 10*landmarks[12].x;
-    // var rShouly = 10*landmarks[12].y;
-    // var rShoul = {x:rShoulx, y:rShouly, z:1*landmarks[12].z};
-    // GlobalUnityInstance.SendMessage("DataReciiver","keypointData12", JSON.stringify(rShoul));
-    
-    // var x = 10*landmarks[15].x
-    // var y = 10*landmarks[15].y
-    // var pos0 = {x:x,y:y,z:1*landmarks[15].z};
-    // GlobalUnityInstance.SendMessage("DataReciiver","keypointData9", JSON.stringify(pos0));
-
-    // var x1 = 10*landmarks[16].x
-    // var y1 = 10*landmarks[16].y
-    // var pos01 = {x:x1,y:y1,z:1*landmarks[16].z};
-    // GlobalUnityInstance.SendMessage("DataReciiver","keypointData10", JSON.stringify(pos01));
