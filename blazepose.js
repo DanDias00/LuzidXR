@@ -1,12 +1,12 @@
-const videoElement = document.getElementsByClassName('input_video')[0];
+const videoElement = document.getElementsByClassName('input_video')[0]; //Getting the camera input from index file
 let landmarks
 
 const pose = new Pose({locateFile: (file) => {
-  return `https://cdn.jsdelivr.net/npm/@mediapipe/pose/${file}`;
+  return `https://cdn.jsdelivr.net/npm/@mediapipe/pose/${file}`;//Loading the BlazePose model 
 }});
 
 pose.setOptions({
-  modelComplexity: 1,
+  modelComplexity: 1,//setting the BlazePose model to lite
   smoothLandmarks: true,
   enableSegmentation: true,
   smoothSegmentation: true,
@@ -18,15 +18,17 @@ pose.onResults(results => {
   landmarks = results.poseLandmarks
 });
 
-const camera = new Camera(videoElement, {
+const camera = new Camera(videoElement, {//setting up the camera
   onFrame: async () => {
     await pose.send({image: videoElement});
   },
-  width: 1920,
-  height: 1080
+  width: 1920,//width of camera input
+  height: 1080//height of camera input
+
+  // can make it repsonsive if needed
 });
 
-camera.start();
+camera.start();//starting the camera
 
 
 let one = {handposeValues: {one :{x:0,y:0,z:0}}};
