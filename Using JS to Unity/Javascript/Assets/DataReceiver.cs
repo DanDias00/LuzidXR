@@ -25,15 +25,19 @@ public class DataReceiver : MonoBehaviour
     {
         pointsData = JsonUtility.FromJson<JsonObject>(data);
 
+        //Whole body movement with smoothning
         WholebodyCopy = new Vector3(-1*pointsData.data0.x, -1*pointsData.data0.y, pointsData.data0.z);
         Vector3 move = new Vector3(-1*pointsData.data0.x, -1*pointsData.data0.y, pointsData.data0.z);
         WholeBody.transform.position = Vector3.MoveTowards(WholebodyCopy, move, Time.deltaTime * speed);
+
+        //Camera canvas renderer
+        
         
         //nose
         keyPoints[0].transform.position = new Vector3(-1*pointsData.data0.x, -1*pointsData.data0.y, pointsData.data0.z);
         
         // textright.text = "zaxis - nosez " + pointsData.data11.z +" left " + pointsData.data15.z;
-        // textleft.text = " right "+pointsData.data16.z;
+        textleft.text = " right "+pointsData.data16.z;
         //left shoulder
         keyPoints[1].transform.position = new Vector3(-1*pointsData.data11.x, -1*pointsData.data11.y, pointsData.data11.z);
         //right shoulder
@@ -43,7 +47,6 @@ public class DataReceiver : MonoBehaviour
         //right elbow
         keyPoints[4].transform.position = new Vector3(-1*pointsData.data14.x, -1*pointsData.data14.y, pointsData.data14.z);
 
-        
         //left wrist
         textleft.text = " left "+pointsData.data15.w;
         if(pointsData.data15.w > 0.7){   
