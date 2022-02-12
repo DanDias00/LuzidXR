@@ -46,7 +46,7 @@ let one = {handposeValues: {one :{x:0,y:0,z:0}}};
 function draw(){
   if (landmarks && landmarks.length) {
     for (let i = 0; i < landmarks.length; i++) {
-      one.handposeValues["data"+i] = {x:30*landmarks[i].x, y:16.875*landmarks[i].y, z:10*landmarks[i].z, w:landmarks[i].visibility}
+      one.handposeValues["data"+i] = {x:30*landmarks[i].x, y:16.875*landmarks[i].y, z:15*landmarks[i].z, w:landmarks[i].visibility}
       GlobalUnityInstance.SendMessage("DataReceiver","keypointData", JSON.stringify(one.handposeValues));
     }
     var d = dist(landmarks[2].x, landmarks[2].y, landmarks[5].x, landmarks[5].y);
