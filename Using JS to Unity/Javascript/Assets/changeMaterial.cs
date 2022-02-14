@@ -4,100 +4,86 @@ using UnityEngine;
 
 public class changeMaterial : MonoBehaviour
 {
-    public int number;
+    // public int number;
+    public Renderer[] clothRenderers;
+    
+    public CharacterDatabase characterDB;
+    public Renderer mat1;
+    public Renderer mat2;
+    public Renderer mat3;
+    public Renderer mat4;
+    public Renderer mat5;
+    public Renderer mat6;
 
-    public Renderer[] cubeRenderer;
-    public GameObject[] cube;
-    public Material red;
-    public Material green;
-    public Material pink;
-    public Material blue;
-    public Material yellow;
-    public Material black;
-    public GameObject[] Colors;
-    public GameObject[] buttons;
-    public Vector3[] positions;
-    
-    
-    
+    int SelectedOption;
 
     // Start is called before the first frame update
     
     void Start()
     {
-        cubeRenderer[number] = cube[number].GetComponent<Renderer>();
-        if(number == 1)
-        {
-            Colors[1].SetActive(false);
-            buttons[1].SetActive(false);
-            buttons[0].transform.position = buttons[1].transform.position;
-
-
-            Colors[0].transform.position = positions[0];
-            Colors[2].transform.position = positions[1];
-            Colors[3].transform.position = positions[2];
-            Colors[4].transform.position = positions[3];
-            Colors[5].transform.position = positions[4];
-            Colors[6].transform.position = positions[5];
-
-
-        }
-        
 
     }
 
+    
     // Update is called once per frame
     void Update()
     {
-        
     }
 
     private void OnCollisionEnter(Collision col)
     {
-        if (col.gameObject.tag == "Green")
+        SelectedOption = DataReceiver.currentIndex;
+        
+
+        if (col.gameObject.tag == "MaterialObj1")
         {
-            int num = 3;
-            while(num == 0)
-            {
-                num = num - 1;
-            }
-            cubeRenderer[number].material = green;
-
-            
-            
-
-            
-            
-
+            clothRenderers[SelectedOption].material = mat1.material;
         }
-        if (col.gameObject.tag == "Blue")
+        if (col.gameObject.tag == "MaterialObj2")
         {
-            cubeRenderer[number].material = blue;
-
+            clothRenderers[SelectedOption].material = mat2.material;
         }
-        if (col.gameObject.tag == "Yellow")
+        if (col.gameObject.tag == "MaterialObj3")
         {
-            cubeRenderer[number].material = yellow;
-
+            clothRenderers[SelectedOption].material = mat3.material;
         }
-        if (col.gameObject.tag == "Red")
+        if (col.gameObject.tag == "MaterialObj4")
         {
-            cubeRenderer[number].material = red;
-
+            clothRenderers[SelectedOption].material = mat4.material;
         }
-        if (col.gameObject.tag == "Black")
+        if (col.gameObject.tag == "MaterialObj5")
         {
-            cubeRenderer[number].material = black;
-
+            clothRenderers[SelectedOption].material = mat5.material;
         }
-        if (col.gameObject.tag == "Pink")
+        if (col.gameObject.tag == "MaterialObj6")
         {
-            cubeRenderer[number].material = pink;
-
-
+            clothRenderers[SelectedOption].material = mat6.material;
         }
+        
+    }
 
-
-
+    public void changeMaterial1()
+    {
+        clothRenderers[SelectedOption].material = mat1.material;
+    }
+    public void changeMaterial2()
+    {
+        clothRenderers[SelectedOption].material = mat2.material;
+    }
+    public void changeMaterial3()
+    {
+        clothRenderers[SelectedOption].material = mat3.material;
+    }
+    public void changeMaterial4()
+    {
+        clothRenderers[SelectedOption].material = mat4.material;
+    }
+    public void changeMaterial5()
+    {
+        clothRenderers[SelectedOption].material = mat5.material;
+    }
+    public void changeMaterial6()
+    {
+        clothRenderers[SelectedOption].material = mat6.material;
     }
 }
