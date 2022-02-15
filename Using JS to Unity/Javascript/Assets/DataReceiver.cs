@@ -16,24 +16,49 @@ public class DataReceiver : MonoBehaviour
     float speed = 0.01f;
     private Vector3 WholebodyCopy;
 
+    public static float distance;
+
     public void dist(string scaleData){
         distData = JsonUtility.FromJson<Distace>(scaleData);
-        WholeBody.transform.localScale = new Vector3(distData.scale, distData.scale, 1);
+        distance = distData.scale;
+        WholeBody.transform.localScale = new Vector3(distData.scale, distData.scale, distData.scale);
+        textleft.text = " right "+distData.scale;
     }
 
     public void keypointData(string data)
     {
         pointsData = JsonUtility.FromJson<JsonObject>(data);
 
-        WholebodyCopy = new Vector3(-1*pointsData.data0.x, -1*pointsData.data0.y, pointsData.data0.z);
-        Vector3 move = new Vector3(-1*pointsData.data0.x, -1*pointsData.data0.y, pointsData.data0.z);
+        float bodyX = (pointsData.data11.x+pointsData.data12.x)/-2;
+        float bodyY = (pointsData.data11.y+pointsData.data12.y)/-2;
+        float bodyZ = (pointsData.data11.z+pointsData.data12.z)/2;
+        //Whole body movement with smoothning
+        WholebodyCopy = new Vector3(bodyX, bodyY, bodyZ);
+        Vector3 move = new Vector3(bodyX, bodyY, bodyZ);
         WholeBody.transform.position = Vector3.MoveTowards(WholebodyCopy, move, Time.deltaTime * speed);
+
+        float rotate = 0;
+        if(pointsData.data12.z < pointsData.data11.z && pointsData.data12.w > 0.7 && pointsData.data12.z - pointsData.data11.z < -1 ){
+            //right side
+            rotate = pointsData.data12.z * -8;
+        }else if(pointsData.data11.z < pointsData.data12.z && pointsData.data11.w > 0.7 && pointsData.data11.z - pointsData.data12.z < -1 ){
+            rotate = pointsData.data11.z * 8 ;
+        }
+        else{
+            rotate = 0;
+        }
+        WholeBody.transform.localEulerAngles = new Vector3(0, rotate, 0);
+
+        //textright.text = " nosez "+pointsData.data11.z;
+        //textleft.text = " right "+pointsData.data12.z;
+        //Camera canvas renderer
+        
         
         //nose
         keyPoints[0].transform.position = new Vector3(-1*pointsData.data0.x, -1*pointsData.data0.y, pointsData.data0.z);
         
         // textright.text = "zaxis - nosez " + pointsData.data11.z +" left " + pointsData.data15.z;
-        // textleft.text = " right "+pointsData.data16.z;
+        
         //left shoulder
         keyPoints[1].transform.position = new Vector3(-1*pointsData.data11.x, -1*pointsData.data11.y, pointsData.data11.z);
         //right shoulder
@@ -43,17 +68,15 @@ public class DataReceiver : MonoBehaviour
         //right elbow
         keyPoints[4].transform.position = new Vector3(-1*pointsData.data14.x, -1*pointsData.data14.y, pointsData.data14.z);
 
-        
         //left wrist
-        textleft.text = " left "+pointsData.data15.w;
+        
         if(pointsData.data15.w > 0.7){   
             keyPoints[5].transform.position = new Vector3(-1*pointsData.data15.x, -1*pointsData.data15.y, pointsData.data15.z);
         }else{
             keyPoints[5].transform.position = new Vector3(-1*pointsData.data0.x-5, -1*pointsData.data0.y-25, pointsData.data0.z);
         }
 
-        //right wrist
-        textright.text = " right "+pointsData.data16.w;       
+        //right wrists
         if(pointsData.data16.w > 0.7){    
             keyPoints[6].transform.position = new Vector3(-1*pointsData.data16.x, -1*pointsData.data16.y, pointsData.data16.z);  
         }else{
@@ -98,5 +121,76 @@ public class DataReceiver : MonoBehaviour
 
     public class Distace{
         public float scale;
+    }
+
+
+//-----------------------------------------------------------------------------------------
+    public CharacterDatabase characterDB;
+    public Text nameText;
+    public GameObject[] models;
+    public GameObject[] materialObjects;
+    public GameObject[] colorButtons;
+    public static int currentIndex = 0;
+
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        UpdateCharacter(currentIndex);
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
+
+    public void NextOption()
+    {
+        UpdateCharacter(currentIndex);
+        currentIndex++;
+        if (currentIndex == models.Length)
+            currentIndex = 0;
+        UpdateCharacter(currentIndex);
+    }
+
+    public void BackOption()
+    {
+        UpdateCharacter(currentIndex);
+        currentIndex--;
+        if (currentIndex == -1)
+            currentIndex = models.Length -1 ;
+        UpdateCharacter(currentIndex);
+    }
+
+    private void UpdateCharacter(int SelectedOption)
+    {
+        //creating a new character for the selected index
+        Character character = characterDB.Getcharacter(SelectedOption);
+        //set the name of the selected index
+        nameText.text = character.charaterName;
+
+        //setting all gameobjects to set active false and the selected one to active
+        foreach (GameObject cloth in models)
+            cloth.SetActive(false);
+
+        models[currentIndex].SetActive(true); 
+
+        //setting all gameobjects materials to set active false
+        foreach (GameObject mat in materialObjects)
+            mat.SetActive(false);
+
+        foreach (GameObject button in colorButtons)
+            button.gameObject.SetActive(false);
+
+        //setting the materials for the sepecific gameobjects and set active the no of materials
+        for (int i = 0; i < character.materials.Length; i++)
+        {
+            materialObjects[i].SetActive(true);
+            materialObjects[i].GetComponent<Renderer>().material = character.materials[i];
+
+            colorButtons[i].SetActive(true);
+            colorButtons[i].GetComponent<Image>().sprite  = character.materialSprites[i];
+        }    
     }
 }

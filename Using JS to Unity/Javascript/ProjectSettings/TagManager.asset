@@ -5,6 +5,18 @@ TagManager:
   serializedVersion: 2
   tags:
   - New tag
+  - Red
+  - Blue
+  - Green
+  - Pink
+  - Black
+  - Yellow
+  - MaterialObj1
+  - MaterialObj2
+  - MaterialObj3
+  - MaterialObj4
+  - MaterialObj5
+  - MaterialObj6
   layers:
   - Default
   - TransparentFX
