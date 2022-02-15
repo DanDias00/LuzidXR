@@ -37,27 +37,27 @@ public class changeMaterial : MonoBehaviour
 
         if (col.gameObject.tag == "MaterialObj1")
         {
-            clothRenderers[SelectedOption].material = mat1.material;
+            Invoke("MaterialObj1", 3);
         }
         if (col.gameObject.tag == "MaterialObj2")
         {
-            clothRenderers[SelectedOption].material = mat2.material;
+            Invoke("MaterialObj2", 3);
         }
         if (col.gameObject.tag == "MaterialObj3")
         {
-            clothRenderers[SelectedOption].material = mat3.material;
+            Invoke("MaterialObj3", 3);
         }
         if (col.gameObject.tag == "MaterialObj4")
         {
-            clothRenderers[SelectedOption].material = mat4.material;
+            Invoke("MaterialObj4", 3);
         }
         if (col.gameObject.tag == "MaterialObj5")
         {
-            clothRenderers[SelectedOption].material = mat5.material;
+            Invoke("MaterialObj5", 3);
         }
         if (col.gameObject.tag == "MaterialObj6")
         {
-            clothRenderers[SelectedOption].material = mat6.material;
+            Invoke("MaterialObj6", 3);
         }
         
     }
@@ -86,4 +86,35 @@ public class changeMaterial : MonoBehaviour
     {
         clothRenderers[SelectedOption].material = mat6.material;
     }
+
+    public void MaterialObj1()
+    {
+        clothRenderers[SelectedOption].material = mat1.material;
+    }
+    public void MaterialObj2()
+    {
+        clothRenderers[SelectedOption].material = mat2.material;
+    }
+    public void MaterialObj3()
+    {
+        clothRenderers[SelectedOption].material = mat3.material;
+    }
+    public void MaterialObj4()
+    {
+        clothRenderers[SelectedOption].material = mat4.material;
+    }
+    public void MaterialObj5()
+    {
+        clothRenderers[SelectedOption].material = mat5.material;
+    }
+    public void MaterialObj6()
+    {
+        clothRenderers[SelectedOption].material = mat6.material;
+    }
+
+
+
+
 }
+
+
