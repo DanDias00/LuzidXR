@@ -16,10 +16,13 @@ public class DataReceiver : MonoBehaviour
     float speed = 0.01f;
     private Vector3 WholebodyCopy;
 
+    public static float distance;
+
     public void dist(string scaleData){
         distData = JsonUtility.FromJson<Distace>(scaleData);
+        distance = distData.scale;
         WholeBody.transform.localScale = new Vector3(distData.scale, distData.scale, distData.scale);
-        //textleft.text = " right "+distData.scale;
+        textleft.text = " right "+distData.scale;
     }
 
     public void keypointData(string data)
@@ -46,8 +49,8 @@ public class DataReceiver : MonoBehaviour
         }
         WholeBody.transform.localEulerAngles = new Vector3(0, rotate, 0);
 
-        textright.text = " nosez "+pointsData.data11.z;
-        textleft.text = " right "+pointsData.data12.z;
+        //textright.text = " nosez "+pointsData.data11.z;
+        //textleft.text = " right "+pointsData.data12.z;
         //Camera canvas renderer
         
         
@@ -126,8 +129,8 @@ public class DataReceiver : MonoBehaviour
     public Text nameText;
     public GameObject[] models;
     public GameObject[] materialObjects;
-
-    public int currentIndex = 0;
+    public GameObject[] colorButtons;
+    public static int currentIndex = 0;
 
 
     // Start is called before the first frame update
@@ -177,11 +180,17 @@ public class DataReceiver : MonoBehaviour
         foreach (GameObject mat in materialObjects)
             mat.SetActive(false);
 
+        foreach (GameObject button in colorButtons)
+            button.gameObject.SetActive(false);
+
         //setting the materials for the sepecific gameobjects and set active the no of materials
         for (int i = 0; i < character.materials.Length; i++)
         {
             materialObjects[i].SetActive(true);
             materialObjects[i].GetComponent<Renderer>().material = character.materials[i];
+
+            colorButtons[i].SetActive(true);
+            colorButtons[i].GetComponent<Image>().sprite  = character.materialSprites[i];
         }    
     }
 }

@@ -7,4 +7,5 @@ public class Character
 {
     public string charaterName;
     public Material[] materials;
+    public Sprite[] materialSprites;
 }
