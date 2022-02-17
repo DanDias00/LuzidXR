@@ -1,12 +1,20 @@
 const videoElement = document.getElementsByClassName('input_video')[0]; //Getting the camera input from index file
 let landmarks
-
+let modelComplexityValue;
 const pose = new Pose({locateFile: (file) => {
   return `https://cdn.jsdelivr.net/npm/@mediapipe/pose/${file}`;//Loading the BlazePose model 
 }});
 
+if(canvasWidthCheck>1000){
+
+  modelComplexityValue=2;
+  console.log("heavy")
+}else{
+  modelComplexityValue=1;
+  console.log("light")
+}
 pose.setOptions({
-  modelComplexity: 1,//setting the BlazePose model to lite
+  modelComplexity: modelComplexityValue,
   smoothLandmarks: true,
   enableSegmentation: true,
   smoothSegmentation: true,

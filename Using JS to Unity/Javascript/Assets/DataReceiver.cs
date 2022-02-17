@@ -9,6 +9,9 @@ public class DataReceiver : MonoBehaviour
     public GameObject WholeBody; 
     public Text textright;
     public Text textleft;
+    public float leftArm;
+    public float rightArm;
+    public float nose;
 
     JsonObject pointsData = new JsonObject();
     Distace distData = new Distace();
@@ -96,6 +99,10 @@ public class DataReceiver : MonoBehaviour
         keyPoints[11].transform.position = new Vector3(-1*pointsData.data27.x, -1*pointsData.data27.y, pointsData.data27.z);
         //right ankle
         keyPoints[12].transform.position = new Vector3(-1*pointsData.data28.x, -1*pointsData.data28.y, pointsData.data28.z);
+
+        nose = pointsData.data0.y;
+        leftArm = pointsData.data15.y;
+        rightArm = pointsData.data16.y;
     }
 
     public class JsonObject{
@@ -141,10 +148,19 @@ public class DataReceiver : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
+
+    {//if the left arm gose higher than the nose nextOption method callse
+        if (rightArm > nose)
+            NextOption();
+
+    //if the right arm gose higher than the nose backOption method callse
+        else if (leftArm > nose)
+            BackOption();
+
+
 
     }
-
+    //this method is to cahnge the elemnths (t=shirts) to right side
     public void NextOption()
     {
         UpdateCharacter(currentIndex);
@@ -153,7 +169,7 @@ public class DataReceiver : MonoBehaviour
             currentIndex = 0;
         UpdateCharacter(currentIndex);
     }
-
+    // this method is to change the elements (t-shirts) to left side
     public void BackOption()
     {
         UpdateCharacter(currentIndex);
