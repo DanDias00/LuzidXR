@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour
+public class UIManager : MonoBehaviour
 {
     public GameObject colors;
     public GameObject colorButtons;
@@ -17,8 +17,6 @@ public class NewBehaviourScript : MonoBehaviour
         colors.SetActive(false);
         colorButtons.SetActive(false);
         sizes.SetActive(false);
-
-
     }
 
     // Update is called once per frame
@@ -35,7 +33,6 @@ public class NewBehaviourScript : MonoBehaviour
             sizes.SetActive(false);
             colorButtons.SetActive(true);
             changeClothes.SetActive(false);
-
         }
         
         if (col.gameObject.tag == "sizes")
@@ -47,8 +44,6 @@ public class NewBehaviourScript : MonoBehaviour
         }
         if (col.gameObject.tag == "clothes")
         {
-            
-            
             colorButtons.SetActive(false);
             colors.SetActive(false);
             sizes.SetActive(false);

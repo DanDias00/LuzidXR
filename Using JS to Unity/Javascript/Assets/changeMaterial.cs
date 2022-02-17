@@ -17,49 +17,108 @@ public class changeMaterial : MonoBehaviour
 
     int SelectedOption;
 
+    private float timeRemaining = 3f;
+    private bool collideObj1;
+    private bool collideObj2;
+    private bool collideObj3;
+    private bool collideObj4;
+    private bool collideObj5;
+    private bool collideObj6;
+
     // Start is called before the first frame update
     
     void Start()
     {
-
     }
 
     
     // Update is called once per frame
     void Update()
     {
+        SelectedOption = DataReceiver.currentIndex;
+        //setting timer for 1st GameObject containing the color
+        if(collideObj1 == true){
+            timeRemaining -= Time.deltaTime;
+            if(timeRemaining <= 0){
+                changeMaterial1();
+                timeRemaining = 3f;
+            }
+        }//setting timer for 2nd GameObject containing the color
+        else if(collideObj2 == true){
+            timeRemaining -= Time.deltaTime;
+            if(timeRemaining <= 0){
+                changeMaterial2();
+                timeRemaining = 3f;
+            }
+        }//setting timer for 3rd GameObject containing the color
+        else if(collideObj3 == true){
+            timeRemaining -= Time.deltaTime;
+            if(timeRemaining <= 0){
+                changeMaterial3();
+                timeRemaining = 3f;
+            }
+        }//setting timer for 4th GameObject containing the color
+        else if(collideObj4 == true){
+            timeRemaining -= Time.deltaTime;
+            if(timeRemaining <= 0){
+                changeMaterial4();
+                timeRemaining = 3f;
+            }
+        }//setting timer for 5th GameObject containing the color
+        else if(collideObj5 == true){
+            timeRemaining -= Time.deltaTime;
+            if(timeRemaining <= 0){
+                changeMaterial5();
+                timeRemaining = 3f;
+            }
+        }//setting timer for 6th GameObject containing the color
+        else if(collideObj6 == true){
+            timeRemaining -= Time.deltaTime;
+            if(timeRemaining <= 0){
+                changeMaterial6();
+                timeRemaining = 3f;
+            }
+        }
+        else{
+            timeRemaining = 3f;
+        }
     }
 
     private void OnCollisionEnter(Collision col)
     {
-        SelectedOption = DataReceiver.currentIndex;
-        
-
         if (col.gameObject.tag == "MaterialObj1")
         {
-            Invoke("MaterialObj1", 3);
+            collideObj1 = true;
         }
         if (col.gameObject.tag == "MaterialObj2")
         {
-            Invoke("MaterialObj2", 3);
+            collideObj2 = true;
         }
         if (col.gameObject.tag == "MaterialObj3")
         {
-            Invoke("MaterialObj3", 3);
+            collideObj3 = true;
         }
         if (col.gameObject.tag == "MaterialObj4")
         {
-            Invoke("MaterialObj4", 3);
+            collideObj4 = true;
         }
         if (col.gameObject.tag == "MaterialObj5")
         {
-            Invoke("MaterialObj5", 3);
+            collideObj5 = true;
         }
         if (col.gameObject.tag == "MaterialObj6")
         {
-            Invoke("MaterialObj6", 3);
+            collideObj6 = true;
         }
-        
+    }
+    private void OnCollisionExit(Collision col)
+    {
+        collideObj1 = false;
+        collideObj2 = false;
+        collideObj3 = false;
+        collideObj4 = false;
+        collideObj5 = false;
+        collideObj6 = false;
     }
 
     public void changeMaterial1()
@@ -86,35 +145,6 @@ public class changeMaterial : MonoBehaviour
     {
         clothRenderers[SelectedOption].material = mat6.material;
     }
-
-    public void MaterialObj1()
-    {
-        clothRenderers[SelectedOption].material = mat1.material;
-    }
-    public void MaterialObj2()
-    {
-        clothRenderers[SelectedOption].material = mat2.material;
-    }
-    public void MaterialObj3()
-    {
-        clothRenderers[SelectedOption].material = mat3.material;
-    }
-    public void MaterialObj4()
-    {
-        clothRenderers[SelectedOption].material = mat4.material;
-    }
-    public void MaterialObj5()
-    {
-        clothRenderers[SelectedOption].material = mat5.material;
-    }
-    public void MaterialObj6()
-    {
-        clothRenderers[SelectedOption].material = mat6.material;
-    }
-
-
-
-
 }
 
 
