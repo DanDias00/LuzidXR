@@ -6,25 +6,23 @@ using UnityEngine.Video;
 public class VideoRender : MonoBehaviour
 {
     public GameObject videoScreen;
+    public GameObject ReqScreen;
     WebCamTexture _webcamTexture;
     bool _enabled;
 
+    void Start(){
+        ReqScreen.SetActive(true);
+    }
     public void Enable()
     {
         _enabled = true;
     }
 
-    public void Disable()
-    {
-        disableCamera();
-    }
-
-    #region MONOBEHAVIOUR
-
     void Update()
     {
         if(_enabled)
         {
+            ReqScreen.SetActive(false);
             if(_webcamTexture == null)
             {
                 while(!Application.RequestUserAuthorization(UserAuthorization.WebCam).isDone)
@@ -50,11 +48,5 @@ public class VideoRender : MonoBehaviour
                 }
             }
         }
-    }
-    #endregion
-
-    public void disableCamera()
-    {
-        
     }
 }
