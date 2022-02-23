@@ -50,4 +50,29 @@ public class UIManager : MonoBehaviour
             changeClothes.SetActive(true);
         }
     }
+
+    public void changeColor()
+    {
+        colors.SetActive(true);
+        sizes.SetActive(false);
+        colorButtons.SetActive(true);
+        changeClothes.SetActive(false);
+
+    }
+    public void changeSize()
+    {
+        sizes.SetActive(true);
+        colors.SetActive(false);
+        changeClothes.SetActive(false);
+        colorButtons.SetActive(false);
+
+    }
+    public void cloth()
+    {
+        colorButtons.SetActive(false);
+        colors.SetActive(false);
+        sizes.SetActive(false);
+        changeClothes.SetActive(true);
+
+    }
 }
