@@ -1,0 +1,135 @@
+* {
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+  }
+  
+  body {
+	font-family: "Open Sans", sans-serif;
+	background: #fff;
+	color: #333;
+	line-height: 1.6;
+  }
+  
+ 
+  
+  
+  .row {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	justify-content: space-around;
+  }
+  body {
+	font-family: "Poppins", sans-serif;
+  }
+  
+  .small-container {
+	max-width: 1080px;
+	margin: auto;
+	padding-left: 25px;
+  }
+  
+  
+  
+  
+  
+  select {
+	border: 1px solid #ff523b;
+	padding: 5px;
+  }
+  select.focus {
+	outline: none;
+  }
+  
+  .addToCart {
+	display:inline-block;
+	border:1px solid black;
+	padding:8px 30px;
+	margin:3px 0;
+	border-radius:30px;
+  }
+  
+  .addToCart:hover {
+	background:black;
+	color:white;
+  }
+  
+  .btn {
+	display:inline-block;
+	border:1px solid black;
+	color: #000;
+	
+	padding:8px 30px;
+	margin:3px 0;
+	border-radius:30px;
+  }
+  .btn :hover{
+	background:black;
+	color:white;
+  }
+  
+  
+  
+.single-product{
+    margin-top:80px;
+}
+.single-product .col-2 img{
+    padding:20px;
+	
+}
+.single-product h4{
+    margin:20px 0;
+    font-size: 22px;
+    font-weight: bold;
+
+}
+.single-product select{
+    display: block;
+	padding: 10px;
+	margin-top: 20px;
+
+}
+.single-product input{
+    width: 50px;
+	height: 40px;
+	padding-left: 10px;
+	font-size: 20px;
+	margin-right: 10px;
+	border: 1px solid #ff523b;
+}
+.addToCart{
+	display:inline-block;
+	border:1px solid black;
+	padding:8px 30px;
+	margin:3px 0;
+	border-radius:30px;
+	
+}
+.addToCart:hover{
+	background:black;
+	color:white;
+	
+}
+
+@media only screen and (max-width: 600px){
+	.col-2{
+	  max-width:540px;
+	}
+	.row{
+	  text-align:center;
+	}
+	.clothes{
+	  flex-basis:100%
+	}
+	 
+	.row-2 h2{
+	  font-size: medium;
+	  
+	}
+	.addToCart{
+	  padding:4px 15px;
+	}
+
+  
+}
