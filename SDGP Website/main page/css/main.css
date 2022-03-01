@@ -1,0 +1,123 @@
+*{
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+body{
+    background: linear-gradient(-45deg, black, black, #A85D11, black, black);
+	background-size: 400% 400%;
+	animation: gradient 20s ease infinite;
+	height: 100vh;
+    font-family: 'Roboto', sans-serif;
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+#hero-topic{
+    font-size: 3em;
+    color: orange;
+}
+#demoBTN{
+    margin-top: 10%;
+}
+#row-1,#row-2,#row-3,#row-4{
+    padding: 5% 2%;
+    justify-content: center;
+}
+#row-1-col-1{
+    display: block;
+    font-size: 1.6rem;  
+}
+#hero-img2{
+    margin-top: -80%;
+    height: 80vh;
+ }
+ #row-2-col-2{
+     border-radius: 3%;
+     border: 1px solid orange;
+     background-color: rgb(26, 23, 23);
+ }
+ #row-2-col-2 h2{
+     color: white;
+     font-size: 2.5rem;
+     padding: 15%;
+ }
+#row-3{
+    text-align: center;
+    color: white;
+    border-radius: 8px;
+    border: 1px solid orange;
+    background-color: rgb(26, 23, 23);
+}
+#row3-col-1 h4{
+    font-size: 2rem;
+}
+#row3-col-1 p{
+    padding: 0 25%;
+}
+#row3-text1{
+    margin-bottom: 5%;
+}
+.formGroup{
+    padding-top: 5%;
+    color: white;
+}
+ #float-row{
+     display: flex;
+     justify-content: center;
+ }
+.floating {
+	animation-name: floating;
+	animation-duration: 3s;
+	animation-iteration-count: infinite;
+	animation-timing-function: ease-in-out;
+	margin-top: 5px;
+}
+
+@keyframes floating {
+	0% { transform: translate(0, 0px); }
+	50% { transform: translate(0, 15px); }
+	100% { transform: translate(0, -0px); }
+}
+
+@media (max-width: 768px) {
+    #row-1-col-1{
+        text-align: center;
+        justify-content: center;
+    }
+    #demoBTN{
+        margin-bottom: 5%;
+    }
+    #hero-img2{
+        margin-top: -80%;
+        height: 50vh;
+     }
+     #submitBTN{
+         margin-top: 5%;
+     }
+     #row-1-col-1{
+        font-size: 1rem;  
+    }
+    #row-2-col-1 h2{
+        font-size: 2rem;
+    }
+     #row-2-col-2 h2{
+         font-size: 2rem;
+     }
+     #row3-col-1 p{
+        padding: 0 10%;
+    }
+    video{
+        margin-top: 5%;
+    }
+  }

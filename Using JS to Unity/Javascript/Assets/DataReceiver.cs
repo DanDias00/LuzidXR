@@ -207,11 +207,34 @@ public class DataReceiver : MonoBehaviour
         if(UIManager.handAbility){
             //if the left arm gose higher than the nose nextOption method callse
             if (rightArm > nose)
-                NextOption();
-
+            {
+                timeRemaining -= Time.deltaTime;
+                if (timeRemaining <= 0)
+                {
+                    NextOption();
+                    timeRemaining = 3f;
+                }
+            }
             //if the right arm gose higher than the nose backOption method callse
             else if (leftArm > nose)
-                BackOption();
+
+            {
+                timeRemaining -= Time.deltaTime;
+                if (timeRemaining <= 0)
+
+                {
+                    BackOption();
+                    timeRemaining = 3f;
+                }
+            }
+            else if (rightArm > nose && leftArm > nose)
+            {
+                return;
+            }
+            else
+            {
+                timeRemaining = 3f;
+            }
         }
     }
     //this method is to cahnge the elemnths (t=shirts) to right side
