@@ -30,11 +30,14 @@ public class DataReceiver : MonoBehaviour
     //distance of the user from device
     public static float distance;
 
+    float timeRemaining = 3f;
+
     //main objects containing colors and sizes
     public GameObject colorCubesL;
     public GameObject colorCubesR;
     public GameObject sizeCubes;
     public GameObject mainUICubes;
+    public GameObject arrowObj;
 
     public void dist(string scaleData){
         distData = JsonUtility.FromJson<Distace>(scaleData);
@@ -137,6 +140,7 @@ public class DataReceiver : MonoBehaviour
 
         //keeping the size and color objects in same distance to user so they can reach out to them
         //Z-Axis of the hand and x,y axis of the shoulders are assigned
+        //all the color changing objects
         if(colorCubesL != null && colorCubesR != null)
         {
             colorCubesL.transform.position = new Vector3(-1*(pointsData.data11.x + (5*distance)), -1*pointsData.data11.y, pointsData.data15.z);
@@ -146,15 +150,24 @@ public class DataReceiver : MonoBehaviour
         }else{
             return;
         }
+        //all size changing objects
         if(sizeCubes != null){
             sizeCubes.transform.position = new Vector3(-1*(pointsData.data11.x + (5*distance)), -1*pointsData.data11.y, pointsData.data15.z);
             sizeCubes.transform.localScale = new Vector3(distance, distance, distance);
         }else{
             return;
         }
+        //all main UI containing objects
         if(mainUICubes != null){
             mainUICubes.transform.position = new Vector3(-1*(pointsData.data11.x + (5*distance)), -1*pointsData.data11.y, pointsData.data15.z);
             mainUICubes.transform.localScale = new Vector3(distance, distance, distance);
+        }else{
+            return;
+        }
+        //arrow for back option object
+        if(arrowObj != null){
+            arrowObj.transform.position = new Vector3(-1*(pointsData.data11.x + (5*distance)), -1*(pointsData.data11.y  - (7*distance)), pointsData.data16.z);
+            arrowObj.transform.localScale = new Vector3(distance*4, distance*4, distance*4);
         }else{
             return;
         }
@@ -217,11 +230,9 @@ public class DataReceiver : MonoBehaviour
             }
             //if the right arm gose higher than the nose backOption method callse
             else if (leftArm > nose)
-
             {
                 timeRemaining -= Time.deltaTime;
                 if (timeRemaining <= 0)
-
                 {
                     BackOption();
                     timeRemaining = 3f;

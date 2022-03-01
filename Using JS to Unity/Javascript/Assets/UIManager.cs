@@ -14,6 +14,7 @@ public class UIManager : MonoBehaviour
     public GameObject clothsBtn;
     public GameObject sizeBtn;
     public GameObject colorBtn;
+    public GameObject arrow;
 
     // Start is called before the first frame update
     void Start()
@@ -27,12 +28,7 @@ public class UIManager : MonoBehaviour
         clothsBtn.SetActive(false);
         colorBtn.SetActive(true);
         sizeBtn.SetActive(true);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        arrow.SetActive(false);
     }
 
     private void OnCollisionEnter(Collision col)
@@ -45,7 +41,7 @@ public class UIManager : MonoBehaviour
         {
             changeSize();
         }
-        if (col.gameObject.name == "BackSphere")
+        if (col.gameObject.name == "BackArrow")
         {
             cloth();
         }
@@ -63,6 +59,7 @@ public class UIManager : MonoBehaviour
         clothsBtn.SetActive(true);
         colorBtn.SetActive(false);
         sizeBtn.SetActive(false);
+        arrow.SetActive(true);
     }
     public void changeSize()
     {
@@ -76,6 +73,7 @@ public class UIManager : MonoBehaviour
         clothsBtn.SetActive(true);
         colorBtn.SetActive(false);
         sizeBtn.SetActive(false);
+        arrow.SetActive(true);
     }
     public void cloth()
     {
@@ -89,5 +87,6 @@ public class UIManager : MonoBehaviour
         clothsBtn.SetActive(false);
         colorBtn.SetActive(true);
         sizeBtn.SetActive(true);
+        arrow.SetActive(false);
     }
 }
