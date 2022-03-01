@@ -6,20 +6,20 @@ using UnityEngine.Video;
 public class VideoRender : MonoBehaviour
 {
     public GameObject videoScreen;
+    public GameObject ReqScreen;
+    public GameObject mainUIObj;
     WebCamTexture _webcamTexture;
     bool _enabled;
 
+    void Start(){
+        ReqScreen.SetActive(true);
+    }
     public void Enable()
     {
         _enabled = true;
+        ReqScreen.SetActive(false);
+        mainUIObj.SetActive(true);
     }
-
-    public void Disable()
-    {
-        disableCamera();
-    }
-
-    #region MONOBEHAVIOUR
 
     void Update()
     {
@@ -50,11 +50,5 @@ public class VideoRender : MonoBehaviour
                 }
             }
         }
-    }
-    #endregion
-
-    public void disableCamera()
-    {
-        
     }
 }

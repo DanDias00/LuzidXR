@@ -4,50 +4,89 @@ using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
-    public GameObject colors;
-    public GameObject colorButtons;
-    public GameObject sizes;
-    public GameObject clothes;
-    public GameObject changeClothes;
+    public static bool handAbility;
+    public GameObject colorObj;
+    public GameObject colorPanel;
+    public GameObject sizePanel;
+    public GameObject sizeObj;
+    public GameObject mainPanel;
+    public GameObject mainObj;
+    public GameObject clothsBtn;
+    public GameObject sizeBtn;
+    public GameObject colorBtn;
+    public GameObject arrow;
+
     // Start is called before the first frame update
     void Start()
     {
-        clothes.SetActive(true);
-        changeClothes.SetActive(true);
-        colors.SetActive(false);
-        colorButtons.SetActive(false);
-        sizes.SetActive(false);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        handAbility = true;
+        sizeObj.SetActive(false);
+        mainPanel.SetActive(true);
+        colorObj.SetActive(false);
+        colorPanel.SetActive(false);
+        sizePanel.SetActive(false);
+        clothsBtn.SetActive(false);
+        colorBtn.SetActive(true);
+        sizeBtn.SetActive(true);
+        arrow.SetActive(false);
     }
 
     private void OnCollisionEnter(Collision col)
     {
-        if(col.gameObject.tag == "colors")
+        if(col.gameObject.name == "ColorSphere")
         {
-            colors.SetActive(true);
-            sizes.SetActive(false);
-            colorButtons.SetActive(true);
-            changeClothes.SetActive(false);
+            changeColor();
         }
-        
-        if (col.gameObject.tag == "sizes")
+        if (col.gameObject.name == "SizeSphere")
         {
-            sizes.SetActive(true);
-            colors.SetActive(false);
-            changeClothes.SetActive(false);
-            colorButtons.SetActive(false);
+            changeSize();
         }
-        if (col.gameObject.tag == "clothes")
+        if (col.gameObject.name == "BackArrow")
         {
-            colorButtons.SetActive(false);
-            colors.SetActive(false);
-            sizes.SetActive(false);
-            changeClothes.SetActive(true);
+            cloth();
         }
+    }
+
+    public void changeColor()
+    {
+        handAbility = false;
+        colorObj.SetActive(true);
+        sizePanel.SetActive(false);
+        sizeObj.SetActive(false);
+        colorPanel.SetActive(true);
+        mainPanel.SetActive(false);
+        mainObj.SetActive(false);
+        clothsBtn.SetActive(true);
+        colorBtn.SetActive(false);
+        sizeBtn.SetActive(false);
+        arrow.SetActive(true);
+    }
+    public void changeSize()
+    {
+        handAbility = false;
+        sizePanel.SetActive(true);
+        sizeObj.SetActive(true);
+        colorObj.SetActive(false);
+        mainPanel.SetActive(false);
+        mainObj.SetActive(false);
+        colorPanel.SetActive(false);
+        clothsBtn.SetActive(true);
+        colorBtn.SetActive(false);
+        sizeBtn.SetActive(false);
+        arrow.SetActive(true);
+    }
+    public void cloth()
+    {
+        handAbility = true;
+        sizeObj.SetActive(false);
+        mainPanel.SetActive(true);
+        mainObj.SetActive(true);
+        colorObj.SetActive(false);
+        colorPanel.SetActive(false);
+        sizePanel.SetActive(false);
+        clothsBtn.SetActive(false);
+        colorBtn.SetActive(true);
+        sizeBtn.SetActive(true);
+        arrow.SetActive(false);
     }
 }

@@ -1,26 +1,19 @@
-const videoElement = document.getElementsByClassName('input_video')[0]; //Getting the camera input from index file
+const videoElement = document.getElementsByClassName('input_video')[0];
 let landmarks
-let modelComplexityValue;
+
 const pose = new Pose({locateFile: (file) => {
-  return `https://cdn.jsdelivr.net/npm/@mediapipe/pose/${file}`;//Loading the BlazePose model 
+  return `https://cdn.jsdelivr.net/npm/@mediapipe/pose/${file}`;
 }});
 
-if(canvasWidthCheck>1000){
-
-  modelComplexityValue=2;
-  console.log("heavy")
-}else{
-  modelComplexityValue=1;
-  console.log("light")
-}
 pose.setOptions({
-  modelComplexity: modelComplexityValue,
+  modelComplexity: 1,
   smoothLandmarks: true,
   enableSegmentation: true,
   smoothSegmentation: true,
   minDetectionConfidence: 0.5,
   minTrackingConfidence: 0.5
 });
+
 
 pose.onResults(results => {
   landmarks = results.poseLandmarks
@@ -54,11 +47,13 @@ let one = {handposeValues: {one :{x:0,y:0,z:0}}};
 function draw(){
   if (landmarks && landmarks.length) {
     for (let i = 0; i < landmarks.length; i++) {
-      one.handposeValues["data"+i] = {x:30*landmarks[i].x, y:16.875*landmarks[i].y, z:15*landmarks[i].z, w:landmarks[i].visibility}
+      one.handposeValues["data"+i] = {x:30*landmarks[i].x, y:16.875*landmarks[i].y, z:10*landmarks[i].z, w:landmarks[i].visibility}
       GlobalUnityInstance.SendMessage("DataReceiver","keypointData", JSON.stringify(one.handposeValues));
     }
-    var d = dist(landmarks[2].x, landmarks[2].y, landmarks[5].x, landmarks[5].y);
-    var distance = {scale:d*20};
+    var meadianX = (landmarks[11].x + landmarks[12].x)/2;
+    var meadianY = (landmarks[11].y + landmarks[12].y)/2;
+    var d = dist(meadianX, meadianY, landmarks[0].x, landmarks[0].y);
+    var distance = {scale:d*5};
     GlobalUnityInstance.SendMessage("DataReceiver","dist", JSON.stringify(distance));
   }
 }

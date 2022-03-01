@@ -5,41 +5,61 @@ using UnityEngine.UI;
 
 public class DataReceiver : MonoBehaviour
 {
-    public GameObject[] keyPoints = new GameObject[12];
+    //array for storing all keypoint objects
+    public GameObject[] keyPoints = new GameObject[13];
+    //all the cloths come under this object
     public GameObject WholeBody; 
+
     public Text textright;
     public Text textleft;
+    //public assignmnet of keypoint data for changing clothes by raising the hand
     public float leftArm;
     public float rightArm;
     public float nose;
 
+    //jsonObject where the points data are passed and assigned 
     JsonObject pointsData = new JsonObject();
+    //distance object where the distance is passed and assigned by javascript
     Distace distData = new Distace();
 
+    //float for smoothning movement
     float speed = 0.01f;
+    //copy of the position of object for smoothning purposes
     private Vector3 WholebodyCopy;
 
+    //distance of the user from device
     public static float distance;
+
+    float timeRemaining = 3f;
+
+    //main objects containing colors and sizes
+    public GameObject colorCubesL;
+    public GameObject colorCubesR;
+    public GameObject sizeCubes;
+    public GameObject mainUICubes;
+    public GameObject arrowObj;
 
     public void dist(string scaleData){
         distData = JsonUtility.FromJson<Distace>(scaleData);
         distance = distData.scale;
         WholeBody.transform.localScale = new Vector3(distData.scale, distData.scale, distData.scale);
-        textleft.text = " right "+distData.scale;
     }
 
     public void keypointData(string data)
     {
+        //creating a object from data recived as JsonObject
         pointsData = JsonUtility.FromJson<JsonObject>(data);
 
-        float bodyX = (pointsData.data11.x+pointsData.data12.x)/-2;
-        float bodyY = (pointsData.data11.y+pointsData.data12.y)/-2;
-        float bodyZ = (pointsData.data11.z+pointsData.data12.z)/2;
+        //getting mid value of shoulders
+        float shoulderMidX = (pointsData.data11.x + pointsData.data12.x)/-2;
+        float shoulderMidY = (pointsData.data11.y + pointsData.data12.y)/-2;
+        float shoulderMidZ = (pointsData.data11.z + pointsData.data12.z)/-2;
         //Whole body movement with smoothning
-        WholebodyCopy = new Vector3(bodyX, bodyY, bodyZ);
-        Vector3 move = new Vector3(bodyX, bodyY, bodyZ);
+        WholebodyCopy = new Vector3(shoulderMidX, shoulderMidY, shoulderMidZ);
+        Vector3 move = new Vector3(shoulderMidX, shoulderMidY, shoulderMidZ);
         WholeBody.transform.position = Vector3.MoveTowards(WholebodyCopy, move, Time.deltaTime * speed);
 
+        //whole body rotation by sholder point data
         float rotate = 0;
         if(pointsData.data12.z < pointsData.data11.z && pointsData.data12.w > 0.7 && pointsData.data12.z - pointsData.data11.z < -1 ){
             //right side
@@ -52,27 +72,27 @@ public class DataReceiver : MonoBehaviour
         }
         WholeBody.transform.localEulerAngles = new Vector3(0, rotate, 0);
 
-        //textright.text = " nosez "+pointsData.data11.z;
-        //textleft.text = " right "+pointsData.data12.z;
+        textright.text = " nosez "+distance;
+        textleft.text = " right "+pointsData.data12.x;
         //Camera canvas renderer
         
         
         //nose
         keyPoints[0].transform.position = new Vector3(-1*pointsData.data0.x, -1*pointsData.data0.y, pointsData.data0.z);
-        
-        // textright.text = "zaxis - nosez " + pointsData.data11.z +" left " + pointsData.data15.z;
-        
         //left shoulder
         keyPoints[1].transform.position = new Vector3(-1*pointsData.data11.x, -1*pointsData.data11.y, pointsData.data11.z);
         //right shoulder
         keyPoints[2].transform.position = new Vector3(-1*pointsData.data12.x, -1*pointsData.data12.y, pointsData.data12.z);
+
+        //shoulder middle
+        keyPoints[13].transform.position = new Vector3(shoulderMidX, shoulderMidY, shoulderMidZ);
+
         //left elbow
         keyPoints[3].transform.position = new Vector3(-1*pointsData.data13.x, -1*pointsData.data13.y, pointsData.data13.z);
         //right elbow
         keyPoints[4].transform.position = new Vector3(-1*pointsData.data14.x, -1*pointsData.data14.y, pointsData.data14.z);
 
         //left wrist
-        
         if(pointsData.data15.w > 0.7){   
             keyPoints[5].transform.position = new Vector3(-1*pointsData.data15.x, -1*pointsData.data15.y, pointsData.data15.z);
         }else{
@@ -91,6 +111,19 @@ public class DataReceiver : MonoBehaviour
         keyPoints[7].transform.position = new Vector3(-1*pointsData.data23.x, -1*pointsData.data23.y, pointsData.data23.z);
         //right hip
         keyPoints[8].transform.position = new Vector3(-1*pointsData.data24.x, -1*pointsData.data24.y, pointsData.data24.z);
+
+        //hip middle - calculated by getting the mean value of axises of 2 hip points
+        float hipMidX = (pointsData.data23.x + pointsData.data24.x)/-2;
+        float hipMidY = (pointsData.data23.y + pointsData.data24.y)/-2;
+        float hipMidZ = (pointsData.data23.z + pointsData.data24.z)/-2;
+        keyPoints[14].transform.position = new Vector3(hipMidX, hipMidY, hipMidZ);
+
+        //torso middle - calculated by getting the mean value of axises of hip and shoulder mid point
+        float torsoMidX = (hipMidX + shoulderMidX)/-2;
+        float torsoMidY = (hipMidY + shoulderMidY)/-2;
+        float torsoMidZ = (hipMidZ + shoulderMidZ)/-2;
+        keyPoints[15].transform.position = new Vector3(torsoMidX, torsoMidY, torsoMidZ);
+
         //left knee
         keyPoints[9].transform.position = new Vector3(-1*pointsData.data25.x, -1*pointsData.data25.y, pointsData.data25.z);
         //right knee
@@ -100,9 +133,44 @@ public class DataReceiver : MonoBehaviour
         //right ankle
         keyPoints[12].transform.position = new Vector3(-1*pointsData.data28.x, -1*pointsData.data28.y, pointsData.data28.z);
 
-        nose = pointsData.data0.y;
-        leftArm = pointsData.data15.y;
-        rightArm = pointsData.data16.y;
+        //assigning the keypoint data to objects
+        nose = pointsData.data0.y*-1;
+        leftArm = pointsData.data15.y*-1;
+        rightArm = pointsData.data16.y*-1;
+
+        //keeping the size and color objects in same distance to user so they can reach out to them
+        //Z-Axis of the hand and x,y axis of the shoulders are assigned
+        //all the color changing objects
+        if(colorCubesL != null && colorCubesR != null)
+        {
+            colorCubesL.transform.position = new Vector3(-1*(pointsData.data11.x + (5*distance)), -1*pointsData.data11.y, pointsData.data15.z);
+            colorCubesR.transform.position = new Vector3(-1*(pointsData.data12.x - (5*distance)), -1*pointsData.data12.y, pointsData.data16.z);
+            colorCubesL.transform.localScale = new Vector3(distance, distance, distance);
+            colorCubesR.transform.localScale = new Vector3(distance, distance, distance);
+        }else{
+            return;
+        }
+        //all size changing objects
+        if(sizeCubes != null){
+            sizeCubes.transform.position = new Vector3(-1*(pointsData.data11.x + (5*distance)), -1*pointsData.data11.y, pointsData.data15.z);
+            sizeCubes.transform.localScale = new Vector3(distance, distance, distance);
+        }else{
+            return;
+        }
+        //all main UI containing objects
+        if(mainUICubes != null){
+            mainUICubes.transform.position = new Vector3(-1*(pointsData.data11.x + (5*distance)), -1*pointsData.data11.y, pointsData.data15.z);
+            mainUICubes.transform.localScale = new Vector3(distance, distance, distance);
+        }else{
+            return;
+        }
+        //arrow for back option object
+        if(arrowObj != null){
+            arrowObj.transform.position = new Vector3(-1*(pointsData.data11.x + (5*distance)), -1*(pointsData.data11.y  - (7*distance)), pointsData.data16.z);
+            arrowObj.transform.localScale = new Vector3(distance*4, distance*4, distance*4);
+        }else{
+            return;
+        }
     }
 
     public class JsonObject{
@@ -148,17 +216,37 @@ public class DataReceiver : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-
-    {//if the left arm gose higher than the nose nextOption method callse
-        if (rightArm > nose)
-            NextOption();
-
-    //if the right arm gose higher than the nose backOption method callse
-        else if (leftArm > nose)
-            BackOption();
-
-
-
+    {
+        if(UIManager.handAbility){
+            //if the left arm gose higher than the nose nextOption method callse
+            if (rightArm > nose)
+            {
+                timeRemaining -= Time.deltaTime;
+                if (timeRemaining <= 0)
+                {
+                    NextOption();
+                    timeRemaining = 3f;
+                }
+            }
+            //if the right arm gose higher than the nose backOption method callse
+            else if (leftArm > nose)
+            {
+                timeRemaining -= Time.deltaTime;
+                if (timeRemaining <= 0)
+                {
+                    BackOption();
+                    timeRemaining = 3f;
+                }
+            }
+            else if (rightArm > nose && leftArm > nose)
+            {
+                return;
+            }
+            else
+            {
+                timeRemaining = 3f;
+            }
+        }
     }
     //this method is to cahnge the elemnths (t=shirts) to right side
     public void NextOption()
