@@ -83,14 +83,14 @@ public class sizeChange : MonoBehaviour
 
     public void btn_change_One()
     {
-        clothes.transform.localScale = new Vector3(1f, 1f, 1f);
+        clothes.transform.localScale = new Vector3(0.8f, 0.8f, 0.8f);
     }
     public void btn_change_Two()
     {
-        clothes.transform.localScale = new Vector3(2f, 2f, 2f);
+        clothes.transform.localScale = new Vector3(1f, 1f, 1f);
     }
     public void btn_change_Three()
     {
-        clothes.transform.localScale = new Vector3(3f, 3f, 3f);
+        clothes.transform.localScale = new Vector3(1.2f, 1.2f, 1.2f);
     }
 }

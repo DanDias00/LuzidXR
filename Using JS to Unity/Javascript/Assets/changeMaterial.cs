@@ -17,7 +17,7 @@ public class changeMaterial : MonoBehaviour
 
     int SelectedOption;
 
-    private float timeRemaining = 2f;
+    private float timeRemaining = 3f;
     private bool collideObj1;
     private bool collideObj2;
     private bool collideObj3;
@@ -41,46 +41,46 @@ public class changeMaterial : MonoBehaviour
             timeRemaining -= Time.deltaTime;
             if(timeRemaining <= 0){
                 changeMaterial1();
-                timeRemaining = 2f;
+                timeRemaining = 3f;
             }
         }//setting timer for 2nd GameObject containing the color
         else if(collideObj2 == true){
             timeRemaining -= Time.deltaTime;
             if(timeRemaining <= 0){
                 changeMaterial2();
-                timeRemaining = 2f;
+                timeRemaining = 3f;
             }
         }//setting timer for 3rd GameObject containing the color
         else if(collideObj3 == true){
             timeRemaining -= Time.deltaTime;
             if(timeRemaining <= 0){
                 changeMaterial3();
-                timeRemaining = 2f;
+                timeRemaining = 3f;
             }
         }//setting timer for 4th GameObject containing the color
         else if(collideObj4 == true){
             timeRemaining -= Time.deltaTime;
             if(timeRemaining <= 0){
                 changeMaterial4();
-                timeRemaining = 2f;
+                timeRemaining = 3f;
             }
         }//setting timer for 5th GameObject containing the color
         else if(collideObj5 == true){
             timeRemaining -= Time.deltaTime;
             if(timeRemaining <= 0){
                 changeMaterial5();
-                timeRemaining = 2f;
+                timeRemaining = 3f;
             }
         }//setting timer for 6th GameObject containing the color
         else if(collideObj6 == true){
             timeRemaining -= Time.deltaTime;
             if(timeRemaining <= 0){
                 changeMaterial6();
-                timeRemaining = 2f;
+                timeRemaining = 3f;
             }
         }
         else{
-            timeRemaining = 2f;
+            timeRemaining = 3f;
         }
     }
 
@@ -88,7 +88,6 @@ public class changeMaterial : MonoBehaviour
     {
         if (col.gameObject.tag == "MaterialObj1")
         {
-            //changeMaterial1();
             collideObj1 = true;
         }
         if (col.gameObject.tag == "MaterialObj2")

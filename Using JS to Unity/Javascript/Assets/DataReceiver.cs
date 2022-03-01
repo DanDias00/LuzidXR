@@ -34,6 +34,7 @@ public class DataReceiver : MonoBehaviour
     public GameObject colorCubesL;
     public GameObject colorCubesR;
     public GameObject sizeCubes;
+    public GameObject mainUICubes;
 
     public void dist(string scaleData){
         distData = JsonUtility.FromJson<Distace>(scaleData);
@@ -68,8 +69,8 @@ public class DataReceiver : MonoBehaviour
         }
         WholeBody.transform.localEulerAngles = new Vector3(0, rotate, 0);
 
-        textright.text = " nosez "+pointsData.data16.z;
-        textleft.text = " right "+pointsData.data24.z;
+        textright.text = " nosez "+distance;
+        textleft.text = " right "+pointsData.data12.x;
         //Camera canvas renderer
         
         
@@ -138,13 +139,22 @@ public class DataReceiver : MonoBehaviour
         //Z-Axis of the hand and x,y axis of the shoulders are assigned
         if(colorCubesL != null && colorCubesR != null)
         {
-            colorCubesL.transform.position = new Vector3(-1*pointsData.data11.x, -1*pointsData.data11.y, pointsData.data15.z);
-            colorCubesR.transform.position = new Vector3(-1*pointsData.data12.x, -1*pointsData.data12.y, pointsData.data16.z);
+            colorCubesL.transform.position = new Vector3(-1*(pointsData.data11.x + (5*distance)), -1*pointsData.data11.y, pointsData.data15.z);
+            colorCubesR.transform.position = new Vector3(-1*(pointsData.data12.x - (5*distance)), -1*pointsData.data12.y, pointsData.data16.z);
+            colorCubesL.transform.localScale = new Vector3(distance, distance, distance);
+            colorCubesR.transform.localScale = new Vector3(distance, distance, distance);
         }else{
             return;
         }
         if(sizeCubes != null){
-            sizeCubes.transform.position = new Vector3(-1*pointsData.data12.x, -1*pointsData.data12.y, pointsData.data16.z);
+            sizeCubes.transform.position = new Vector3(-1*(pointsData.data11.x + (5*distance)), -1*pointsData.data11.y, pointsData.data15.z);
+            sizeCubes.transform.localScale = new Vector3(distance, distance, distance);
+        }else{
+            return;
+        }
+        if(mainUICubes != null){
+            mainUICubes.transform.position = new Vector3(-1*(pointsData.data11.x + (5*distance)), -1*pointsData.data11.y, pointsData.data15.z);
+            mainUICubes.transform.localScale = new Vector3(distance, distance, distance);
         }else{
             return;
         }
@@ -193,17 +203,16 @@ public class DataReceiver : MonoBehaviour
 
     // Update is called once per frame
     void Update()
+    {
+        if(UIManager.handAbility){
+            //if the left arm gose higher than the nose nextOption method callse
+            if (rightArm > nose)
+                NextOption();
 
-    {//if the left arm gose higher than the nose nextOption method callse
-        if (rightArm > nose)
-            NextOption();
-
-    //if the right arm gose higher than the nose backOption method callse
-        else if (leftArm > nose)
-            BackOption();
-
-
-
+            //if the right arm gose higher than the nose backOption method callse
+            else if (leftArm > nose)
+                BackOption();
+        }
     }
     //this method is to cahnge the elemnths (t=shirts) to right side
     public void NextOption()

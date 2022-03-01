@@ -17,8 +17,16 @@ MonoBehaviour:
     materials:
     - {fileID: 2100000, guid: ede34ac3615ae834cb60ab2b59f9cdad, type: 2}
     - {fileID: 2100000, guid: 5e38fb0806ecdab469a48343b33a7772, type: 2}
+    - {fileID: 2100000, guid: 773de856a63bb964b9301bd9d57680bd, type: 2}
+    - {fileID: 2100000, guid: b7b33bda78c9949429e2aeb1cf834ef3, type: 2}
+    - {fileID: 2100000, guid: e3a2dc02f486e884ea348ea2df76c0a3, type: 2}
+    - {fileID: 2100000, guid: 1684f4ec8c5b3a44a816a93d18717485, type: 2}
     materialSprites:
     - {fileID: -2413806693520163455, guid: aa1f449ab27074fe29967940757ddb1f, type: 3}
+    - {fileID: 7482667652216324306, guid: 550fc1ac897854b82bd525d739db5513, type: 3}
+    - {fileID: 7482667652216324306, guid: 550fc1ac897854b82bd525d739db5513, type: 3}
+    - {fileID: 7482667652216324306, guid: 550fc1ac897854b82bd525d739db5513, type: 3}
+    - {fileID: 7482667652216324306, guid: 550fc1ac897854b82bd525d739db5513, type: 3}
     - {fileID: 7482667652216324306, guid: 550fc1ac897854b82bd525d739db5513, type: 3}
   - charaterName: Cloth2
     materials:

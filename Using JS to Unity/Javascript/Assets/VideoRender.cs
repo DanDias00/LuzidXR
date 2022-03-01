@@ -7,6 +7,7 @@ public class VideoRender : MonoBehaviour
 {
     public GameObject videoScreen;
     public GameObject ReqScreen;
+    public GameObject mainUIObj;
     WebCamTexture _webcamTexture;
     bool _enabled;
 
@@ -16,13 +17,14 @@ public class VideoRender : MonoBehaviour
     public void Enable()
     {
         _enabled = true;
+        ReqScreen.SetActive(false);
+        mainUIObj.SetActive(true);
     }
 
     void Update()
     {
         if(_enabled)
         {
-            ReqScreen.SetActive(false);
             if(_webcamTexture == null)
             {
                 while(!Application.RequestUserAuthorization(UserAuthorization.WebCam).isDone)
