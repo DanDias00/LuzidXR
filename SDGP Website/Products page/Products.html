@@ -1,0 +1,193 @@
+<!doctype html>
+	<html>
+		<head>
+		<meta charset="UTF-8">
+			<title>Products</title> 
+			<link rel="stylesheet" href="style.css">
+			<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,300&display=swap" >
+		    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+			<script src="shop.js"></script>
+		</head>
+		<body>
+		<header>
+		
+	<div id="navbar" class="navbar">  
+      <h1 class="logo"><span class="text-primary">GEAR</span>-UP</h1>
+      <nav>
+	  <br>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#home">Products</a></li>
+          <li><a href="#home">About</a></li>
+          <li><a href="#home">Contact</a></li>
+          <li><a href="#home">Account</a></li>
+		  <a id ="cartButton">
+			<img id ="cartButton" src="images\add.png" width="30px" height="30px" onclick="showCart()" alt="cart">
+		  </a>
+        </ul>
+      </nav>
+    </div>
+        </header>
+		    <div class="products">
+				<div class="row row-2">
+					<h2>All Products</h2>
+					
+				</div>
+			
+			<div class="row">
+				<div class="clothes">
+					<img  src="images/1.jpg" alt="football">
+						<h4>Mens shirt</h4>
+						<div class="rating">
+							<i class="fa fa-star"></i>
+							<i class="fa fa-star"></i>
+							<i class="fa fa-star"></i>
+							<i class="fa fa-star"></i>
+							<i class="fa fa-star-o"></i>
+					    </div>
+						<p>$ 80</p>
+						<button onclick="show('0')"   class="addToCart">Buy</buton>
+						
+						
+						
+				</div>
+								
+						
+				
+				<div class="clothes">
+						<img src="images/2.jpg" alt="badminton" >
+						<h4>Mens trouse</h4>
+						<div class="rating">
+							<i class="fa fa-star"></i>
+							<i class="fa fa-star"></i>
+							<i class="fa fa-star"></i>
+							<i class="fa fa-star"></i>
+							<i class="fa fa-star-o"></i>
+						</div>
+						<p>$ 50</p>
+						
+						
+						<button onclick="show('1')"  class="addToCart">Buy</buton>
+								
+						
+				</div>
+				<div class="clothes">
+						<img src="images/3.jpg" alt="Women frock">
+						<h4>Women frock</h4>
+						<div class="rating">
+							<i class="fa fa-star"></i>
+							<i class="fa fa-star"></i>
+							<i class="fa fa-star"></i>
+							<i class="fa fa-star"></i>
+							<i class="fa fa-star"></i>
+						</div>
+						<p>$ 60</p>
+						<button onclick="show('2')"  class="addToCart">Buy</buton>
+								
+						
+				</div>
+				<div class="clothes">
+						<img src="images/4.jpg" alt="helmet">
+						<h4>Mens t-shirt</h4>
+						<div class="rating">
+							<i class="fa fa-star"></i>
+							<i class="fa fa-star-o"></i>
+							<i class="fa fa-star-o"></i>
+							<i class="fa fa-star-o"></i>
+							<i class="fa fa-star-o"></i>
+						</div>
+						<p>$ 40</p>
+					    <button onclick= "show('3')" class="addToCart">Buy</buton>
+								
+						
+				</div>
+				<div class="clothes">
+						<img src="images/5.jpg" alt="nike">
+						<h4>Mens t-shirt</h4>
+						<div class="rating">
+							<i class="fa fa-star"></i>
+							<i class="fa fa-star"></i>
+							<i class="fa fa-star"></i>
+							<i class="fa fa-star-o"></i>
+							<i class="fa fa-star-o"></i>
+						</div>
+						<p>$ 70</p>
+						
+							<button onclick= "show('4')" class="addToCart">Buy</buton>
+								
+						
+				</div>
+					<div class="clothes">
+						<img src="images/6.jpg" alt="tshirt">
+						<h4>Nike T-shirt</h4>
+						<div class="rating">
+							<i class="fa fa-star"></i>
+							<i class="fa fa-star"></i>
+							<i class="fa fa-star-o"></i>
+							<i class="fa fa-star-o"></i>
+							<i class="fa fa-star-o"></i>
+						</div>
+						<p>$ 50</p>
+						
+							<button onclick= "show('5')" class="addToCart">Buy</buton>
+							
+						
+								
+						
+					</div>
+					<div class="clothes">
+						<img src="images/1.jpg" alt="tshirt">
+						<h4>Mens shirt</h4>
+						<div class="rating">
+							<i class="fa fa-star"></i>
+							<i class="fa fa-star"></i>
+							<i class="fa fa-star-o"></i>
+							<i class="fa fa-star-o"></i>
+							<i class="fa fa-star-o"></i>
+						</div>
+						<p>$ 20</p>
+						
+							<button onclick= "show('6')" class="addToCart">Buy</buton>
+							
+						
+								
+						
+					</div>
+					<div class="clothes">
+						<img src="images/2.jpg" alt="rugby">
+						<h4>Mens trouse</h4>
+						<div class="rating">
+							<i class="fa fa-star"></i>
+							<i class="fa fa-star"></i>
+							<i class="fa fa-star"></i>
+							<i class="fa fa-star-o"></i>
+							<i class="fa fa-star-o"></i>
+						</div>
+						<p>$ 40</p>
+						
+							<button  onclick= "show('7')" class="addToCart">Buy</buton>
+							
+						
+								
+						
+						
+						
+					</div>
+			</div>
+				<div class="page-btn">
+					<a href = "Products.html"><span>1</span></a>
+					<span>2</span>
+					<span>3</span>
+					<span>&#8594;</span>
+				</div>
+			
+	
+				
+		
+		
+	</div>
+	
+	
+		</body>
+	</html>
+			
