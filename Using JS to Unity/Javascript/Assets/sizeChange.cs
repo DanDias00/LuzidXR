@@ -7,7 +7,7 @@ public class sizeChange : MonoBehaviour
 {
     public GameObject clothes;
 
-    private float timeRemaining = 3f;
+    private float timeRemaining = 2f;
     private bool collideObjSmall;
     private bool collideObjMedium;
     private bool collideObjLarge;
@@ -24,7 +24,7 @@ public class sizeChange : MonoBehaviour
             if (timeRemaining <= 0)
             {
                 btn_change_One();
-                timeRemaining = 3f;
+                timeRemaining = 2f;
             }
         }//setting timer for 2nd GameObject containing the color
         else if (collideObjMedium == true)
@@ -33,7 +33,7 @@ public class sizeChange : MonoBehaviour
             if (timeRemaining <= 0)
             {
                 btn_change_Two();
-                timeRemaining = 3f;
+                timeRemaining = 2f;
             }
         }//setting timer for 3rd GameObject containing the color
         else if (collideObjLarge == true)
@@ -42,12 +42,12 @@ public class sizeChange : MonoBehaviour
             if (timeRemaining <= 0)
             {
                 btn_change_Three();
-                timeRemaining = 3f;
+                timeRemaining = 2f;
             }
         }
         else
         {
-            timeRemaining = 3f;
+            timeRemaining = 2f;
         }
     }
 
