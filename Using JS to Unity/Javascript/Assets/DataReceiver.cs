@@ -30,7 +30,7 @@ public class DataReceiver : MonoBehaviour
     //distance of the user from device
     public static float distance;
 
-    float timeRemaining = 3f;
+    float timeRemaining = 2f;
 
     //main objects containing colors and sizes
     public GameObject colorCubesL;
@@ -72,8 +72,8 @@ public class DataReceiver : MonoBehaviour
         }
         WholeBody.transform.localEulerAngles = new Vector3(0, rotate, 0);
 
-        textright.text = " nosez "+distance;
-        textleft.text = " right "+pointsData.data12.x;
+        // textright.text = " nosez "+distance;
+        // textleft.text = " right "+pointsData.data12.x;
         //Camera canvas renderer
         
         
@@ -166,7 +166,7 @@ public class DataReceiver : MonoBehaviour
         }
         //arrow for back option object
         if(arrowObj != null){
-            arrowObj.transform.position = new Vector3(-1*(pointsData.data11.x + (5*distance)), -1*(pointsData.data11.y  - (7*distance)), pointsData.data16.z);
+            arrowObj.transform.position = new Vector3(-1*(pointsData.data11.x + (5*distance)), -1*(pointsData.data11.y  - (7*distance)), pointsData.data15.z);
             arrowObj.transform.localScale = new Vector3(distance*4, distance*4, distance*4);
         }else{
             return;
@@ -225,7 +225,7 @@ public class DataReceiver : MonoBehaviour
                 if (timeRemaining <= 0)
                 {
                     NextOption();
-                    timeRemaining = 3f;
+                    timeRemaining = 2f;
                 }
             }
             //if the right arm gose higher than the nose backOption method callse
@@ -235,7 +235,7 @@ public class DataReceiver : MonoBehaviour
                 if (timeRemaining <= 0)
                 {
                     BackOption();
-                    timeRemaining = 3f;
+                    timeRemaining = 2f;
                 }
             }
             else if (rightArm > nose && leftArm > nose)
@@ -244,7 +244,7 @@ public class DataReceiver : MonoBehaviour
             }
             else
             {
-                timeRemaining = 3f;
+                timeRemaining = 2f;
             }
         }
     }
