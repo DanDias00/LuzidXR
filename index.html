@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>Unity WebGL Player | LuzidXR</title>
+    <title>Javascript</title>
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
 
@@ -17,11 +17,26 @@
     <script src="https://cdn.jsdelivr.net/npm/@mediapipe/pose/pose.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/p5@1.4.0/lib/p5.js" crossorigin="anonymous"></script>
 
-    <script src="blazepose.js" defer></script>
-    <script src="sketch.js" defer></script>
+    <style>
+      html {
+        -ms-text-size-adjust: 100%;
+        -webkit-text-size-adjust: 100%;
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+      }
 
-    <link rel="stylesheet" href="style.css">
+      body {
+        margin: 0;
+        padding: 0;
+      }
 
+      .input_video,
+      video {
+        display: none;
+        /* -webkit-transform: scaleX(-1);
+        transform: scaleX(-1); */
+      }
+    </style>
   </head>
   <body class="dark">
     <div id="unity-container" class="unity-desktop">
@@ -41,13 +56,48 @@
       <video class="input_video"></video>
     </div>
     <script>
+
+const videoElement = document.getElementsByClassName('input_video')[0];
+      let landmarks
+
+      const pose = new Pose({locateFile: (file) => {
+        return `https://cdn.jsdelivr.net/npm/@mediapipe/pose/${file}`;
+      }});
+
+      pose.setOptions({
+        modelComplexity: 1,
+        smoothLandmarks: true,
+        enableSegmentation: true,
+        smoothSegmentation: true,
+        minDetectionConfidence: 0.5,
+        minTrackingConfidence: 0.5
+      });
+
+
+      pose.onResults(results => {
+        landmarks = results.poseLandmarks
+      });
+
+      const camera = new Camera(videoElement, {//setting up the camera
+        onFrame: async () => {
+          await pose.send({image: videoElement});
+        },
+        width: 1920,//width of camera input
+        height: 1080//height of camera input
+
+        // can make it repsonsive if needed
+      });
+
+      camera.start();//starting the camera
+
+      
       const hideFullScreenButton = "";
       const buildUrl = "Build";
-      const loaderUrl = buildUrl + "/BuildCopy.loader.js";
+      const loaderUrl = buildUrl + "/dontCrashPlz.loader.js";
       const config = {
-        dataUrl: buildUrl + "/BuildCopy.data.unityweb",
-        frameworkUrl: buildUrl + "/BuildCopy.framework.js.unityweb",
-        codeUrl: buildUrl + "/BuildCopy.wasm.unityweb",
+        dataUrl: buildUrl + "/dontCrashPlz.data.unityweb",
+        frameworkUrl: buildUrl + "/dontCrashPlz.framework.js.unityweb",
+        codeUrl: buildUrl + "/dontCrashPlz.wasm.unityweb",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "DefaultCompany",
         productName: "Javascript",
@@ -106,6 +156,24 @@
         });
       };
       document.body.appendChild(script);
+
+
+
+      let one = {handposeValues: {one :{x:0,y:0,z:0}}};
+      function draw(){
+        if (landmarks && landmarks.length) {
+          for (let i = 0; i < landmarks.length; i++) {
+            one.handposeValues["data"+i] = {x:30*landmarks[i].x, y:16.875*landmarks[i].y, z:10*landmarks[i].z, w:landmarks[i].visibility}
+            GlobalUnityInstance.SendMessage("DataReceiver","keypointData", JSON.stringify(one.handposeValues));
+          }
+          var meadianX = (landmarks[11].x + landmarks[12].x)/2;
+          var meadianY = (landmarks[11].y + landmarks[12].y)/2;
+          var d = dist(meadianX, meadianY, landmarks[0].x, landmarks[0].y);
+          var distance = {scale:d*5};
+          GlobalUnityInstance.SendMessage("DataReceiver","dist", JSON.stringify(distance));
+        }
+      }
     </script>
+
   </body>
 </html>
