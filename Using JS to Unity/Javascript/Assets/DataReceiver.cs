@@ -22,6 +22,8 @@ public class DataReceiver : MonoBehaviour
     //distance object where the distance is passed and assigned by javascript
     Distace distData = new Distace();
 
+    SelectedCloth selectedId = new SelectedCloth();
+
     //float for smoothning movement
     float speed = 0.01f;
     //copy of the position of object for smoothning purposes
@@ -39,10 +41,25 @@ public class DataReceiver : MonoBehaviour
     public GameObject mainUICubes;
     public GameObject arrowObj;
 
+    //------------------------------------------
+    public CharacterDatabase characterDB;
+    public Text nameText;
+    public GameObject[] models;
+    public GameObject[] materialObjects;
+    public GameObject[] colorButtons;
+    public static int currentIndex = 0;
+    //------------------------------
+
     public void dist(string scaleData){
         distData = JsonUtility.FromJson<Distace>(scaleData);
         distance = distData.scale;
         WholeBody.transform.localScale = new Vector3(distData.scale, distData.scale, distData.scale);
+    }
+
+    public void idReceiver(string idData){
+        selectedId = JsonUtility.FromJson<SelectedCloth>(idData);
+        //currentIndex = selectedId.value;
+        textright.text = " point  "+selectedId.value;
     }
 
     public void keypointData(string data)
@@ -198,15 +215,12 @@ public class DataReceiver : MonoBehaviour
         public float scale;
     }
 
+     public class SelectedCloth{
+        public int value;
+    }
+
 
 //-----------------------------------------------------------------------------------------
-    public CharacterDatabase characterDB;
-    public Text nameText;
-    public GameObject[] models;
-    public GameObject[] materialObjects;
-    public GameObject[] colorButtons;
-    public static int currentIndex = 0;
-
 
     // Start is called before the first frame update
     void Start()
