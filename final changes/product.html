@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <meta name="viewport" content="width:device-width,initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/aboutUs.css" class="css">
+  <link rel="stylesheet" href="css/nav.css">
+  <link rel="stylesheet" href="css/shop.css">
+  <script src="js/template.js"></script>
+  <script src="js/product.js" defer></script>
+  <script src="js/common.js"></script>
+  <script src="../blazepose.js"></script>
+  <title>Product details</title>
+</head>
+
+<body style="background-color: white;">
+
+  <button onclick="scrollFunction()" id="myBtn"><i class="fas fa-angle-double-up"></i></button>
+  <div class="nav" id="mynav">
+    <a href="index.html" class="active">Home</a>
+    <a href="shop.html">Shop</a>
+    <a href="how.html">How to use</a>
+    <a href="aboutUs.html">About</a>
+    <a href="javascript:void(0);" class="icon" onclick="dropDown()">
+      <i class="fa fa-bars"></i>
+    </a>
+  </div>
+  <div class="small-container single-product ">
+    <div class="row">
+      <div class="col-2">
+        <div class="card3">
+          <img src="" id="myImg">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-2">
+    <div class="card2">
+
+      <h1 style="color: rgb(0, 0, 0);" id="p_name"></h1>
+
+      <p style="color: rgb(0, 0, 0);" id="p_des"></p><br />
+
+      <h4 style="color: rgb(0, 0, 0); font-size: 25px;" id="p_price">Price :</h4>
+      <button class="addToCart" onclick="sendToUnity()">Try out virtually</button>
+      <div class="radio-toolbar">
+        <input type="radio" id="xs" name="radioFruit" value="xs">
+        <label for="xs">XS</label>
+
+        <input type="radio" id="s" name="radioFruit" value="x">
+        <label for="s">S</label>
+
+        <input type="radio" id="m" name="radioFruit" value="m">
+        <label for="m">M</label>
+
+        <input type="radio" id="l" name="radioFruit" value="l">
+        <label for="l">L</label>
+
+        <input type="radio" id="xl" name="radioFruit" value="xl">
+        <label for="xl">XL</label>
+      </div>
+      <p>&nbsp;</p>
+    </div>
+  </div>
+</body>
+
+</html>
