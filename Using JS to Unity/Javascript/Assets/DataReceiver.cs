@@ -48,6 +48,7 @@ public class DataReceiver : MonoBehaviour
     public GameObject[] materialObjects;
     public GameObject[] colorButtons;
     public static int currentIndex = 0;
+    public Slider timerslider;
     //------------------------------
 
     public void dist(string scaleData){
@@ -225,13 +226,17 @@ public class DataReceiver : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        timerslider.maxValue = timeRemaining;
+        timerslider.value = timeRemaining;
+
         UpdateCharacter(currentIndex);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(UIManager.handAbility){
+        timerslider.value = timeRemaining;
+        if (UIManager.handAbility){
             //if the left arm gose higher than the nose nextOption method callse
             if (rightArm > nose)
             {
