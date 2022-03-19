@@ -48,6 +48,7 @@ public class DataReceiver : MonoBehaviour
     public GameObject[] materialObjects;
     public GameObject[] colorButtons;
     public static int currentIndex = 0;
+    public Slider timerslider;
     //------------------------------
 
     public void dist(string scaleData){
@@ -56,10 +57,10 @@ public class DataReceiver : MonoBehaviour
         WholeBody.transform.localScale = new Vector3(distData.scale, distData.scale, distData.scale);
     }
 
-    public void idReceiver(string idData){
-        selectedId = JsonUtility.FromJson<SelectedCloth>(idData);
-        //currentIndex = selectedId.value;
-        textright.text = " point  "+selectedId.value;
+    public void idReceiver(int idData){
+        //selectedId = JsonUtility.FromJson<SelectedCloth>(idData);
+        currentIndex = idData;
+        textright.text = " point  "+idData;
     }
 
     public void keypointData(string data)
@@ -225,13 +226,22 @@ public class DataReceiver : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        timerslider.maxValue = timeRemaining;
+        timerslider.value = timeRemaining;
+
         UpdateCharacter(currentIndex);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(UIManager.handAbility){
+        timerslider.value = timeRemaining;
+        if(timeRemaining == 2f){
+            timerslider.gameObject.SetActive(false);
+        }else{
+            timerslider.gameObject.SetActive(true);
+        }
+        if (UIManager.handAbility){
             //if the left arm gose higher than the nose nextOption method callse
             if (rightArm > nose)
             {

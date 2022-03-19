@@ -11,13 +11,22 @@ public class sizeChange : MonoBehaviour
     private bool collideObjSmall;
     private bool collideObjMedium;
     private bool collideObjLarge;
+    public Slider timersliderSize;
 
     void Start()
     {
+        timersliderSize.maxValue = timeRemaining;
+        timersliderSize.value = timeRemaining;
     }
 
     void Update()
     {
+        timersliderSize.value = timeRemaining;
+        if(timeRemaining == 2f){
+            timersliderSize.gameObject.SetActive(false);
+        }else{
+            timersliderSize.gameObject.SetActive(true);
+        }
         if (collideObjSmall == true)
         {
             timeRemaining -= Time.deltaTime;

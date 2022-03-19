@@ -166,7 +166,13 @@ const videoElement = document.getElementsByClassName('input_video')[0];
       };
       document.body.appendChild(script);
 
-
+      let id;
+      window.addEventListener("load", function () {
+        let url = new URLSearchParams(this.location.search);
+        id = url.get("val");
+       
+       console.log(id);
+      });
 
       let one = {handposeValues: {one :{x:0,y:0,z:0}}};
       function draw(){
@@ -180,8 +186,10 @@ const videoElement = document.getElementsByClassName('input_video')[0];
           var d = dist(meadianX, meadianY, landmarks[0].x, landmarks[0].y);
           var distance = {scale:d*5};
           GlobalUnityInstance.SendMessage("DataReceiver","dist", JSON.stringify(distance));
+          GlobalUnityInstance.SendMessage("DataReceiver","idReceiver", id);
         }
       }
+      
     </script>
 
   </body>
