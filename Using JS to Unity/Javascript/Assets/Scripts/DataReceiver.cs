@@ -236,6 +236,11 @@ public class DataReceiver : MonoBehaviour
     void Update()
     {
         timerslider.value = timeRemaining;
+        if(timeRemaining == 2f){
+            timerslider.gameObject.SetActive(false);
+        }else{
+            timerslider.gameObject.SetActive(true);
+        }
         if (UIManager.handAbility){
             //if the left arm gose higher than the nose nextOption method callse
             if (rightArm > nose)

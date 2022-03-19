@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class changeMaterial : MonoBehaviour
 {
@@ -25,16 +26,26 @@ public class changeMaterial : MonoBehaviour
     private bool collideObj5;
     private bool collideObj6;
 
+    public Slider timerslideColor;
+
     // Start is called before the first frame update
     
     void Start()
     {
+        timerslideColor.maxValue = timeRemaining;
+        timerslideColor.value = timeRemaining;
     }
 
     
     // Update is called once per frame
     void Update()
     {
+        timerslideColor.value = timeRemaining;
+        if(timeRemaining == 2f){
+            timerslideColor.gameObject.SetActive(false);
+        }else{
+            timerslideColor.gameObject.SetActive(true);
+        }
         SelectedOption = DataReceiver.currentIndex;
         //setting timer for 1st GameObject containing the color
         if(collideObj1 == true){
