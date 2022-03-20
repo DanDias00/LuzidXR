@@ -97,6 +97,7 @@ jobs:
             Library-
       - uses: game-ci/unity-builder@v2 #unity builder for the webGl
         with:
+          customImage: 'unityci/editor:2021.2.5f1-base-0'
           targetPlatform: WebGL
 
       - uses: actions/upload-artifact@v2
