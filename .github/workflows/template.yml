@@ -63,7 +63,7 @@ jobs:
           path: ${{ steps.testRunner.outputs.artifactsPath }}
 
   buildWebGL:
-    needs: testRunner #Build only if all tests are passed
+    # needs: testRunner #Build only if all tests are passed
     name: Build for WebGL 🖥️
     runs-on: ubuntu-latest
     strategy:

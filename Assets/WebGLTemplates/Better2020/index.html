@@ -166,6 +166,7 @@ const videoElement = document.getElementsByClassName('input_video')[0];
       };
       document.body.appendChild(script);
 
+      let isAvailable = false;
       let id;
       window.addEventListener("load", function () {
         let url = new URLSearchParams(this.location.search);
@@ -186,7 +187,11 @@ const videoElement = document.getElementsByClassName('input_video')[0];
           var d = dist(meadianX, meadianY, landmarks[0].x, landmarks[0].y);
           var distance = {scale:d*5};
           GlobalUnityInstance.SendMessage("DataReceiver","dist", JSON.stringify(distance));
-          GlobalUnityInstance.SendMessage("DataReceiver","idReceiver", id);
+          // if(id != null && !isAvailable){
+          //   GlobalUnityInstance.SendMessage("DataReceiver","idReceiver", id);
+          //   isAvailable = true
+          // }
+          
         }
       }
       
