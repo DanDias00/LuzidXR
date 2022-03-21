@@ -13,39 +13,63 @@ MonoBehaviour:
   m_Name: New Character Database
   m_EditorClassIdentifier: 
   character:
-  - charaterName: th1th1
+  - charaterName: 'Sport T-Shirt '
     materials:
     - {fileID: 2100000, guid: ede34ac3615ae834cb60ab2b59f9cdad, type: 2}
     - {fileID: 2100000, guid: 5e38fb0806ecdab469a48343b33a7772, type: 2}
-    - {fileID: 2100000, guid: 773de856a63bb964b9301bd9d57680bd, type: 2}
-    - {fileID: 2100000, guid: b7b33bda78c9949429e2aeb1cf834ef3, type: 2}
-    - {fileID: 2100000, guid: e3a2dc02f486e884ea348ea2df76c0a3, type: 2}
+    - {fileID: 2100000, guid: 9a0cd701e0ddd415d8e6627c70dfa478, type: 2}
+    - {fileID: 2100000, guid: 02f6579dd904543f88538faf8d17b25c, type: 2}
+    - {fileID: 2100000, guid: 616f86260c6f247979500342c433eff9, type: 2}
+    materialSprites:
+    - {fileID: 21300000, guid: 559eaecb6df9242199c7e6539f5ba805, type: 3}
+    - {fileID: 21300000, guid: 6cc9c960bc5844c019c4e874dff2639e, type: 3}
+    - {fileID: 21300000, guid: 28fde1e32562e4935a8b4030cb4c97c8, type: 3}
+    - {fileID: 21300000, guid: a779dc49aee864be1b78bbbe64da8039, type: 3}
+    - {fileID: 21300000, guid: 5dd0f6d6022f64d9dac76a8fbb41bfd6, type: 3}
+  - charaterName: Ghost T-Shirt
+    materials:
+    - {fileID: 2100000, guid: 2111d0b3e0d9c41f292d51cba385f164, type: 2}
+    - {fileID: 2100000, guid: cd1f8fbb7be8a481d9f63fca2078160c, type: 2}
+    - {fileID: 2100000, guid: bcc0b19fe5ef84bf8be5fd2fd072bdfc, type: 2}
+    - {fileID: 2100000, guid: eb6fea828d3fc41eea49cb3211362bd2, type: 2}
+    materialSprites:
+    - {fileID: 21300000, guid: d873f853a88ff429db8907594218a988, type: 3}
+    - {fileID: 21300000, guid: 14db61de9f3074df0982f6f588e01ec2, type: 3}
+    - {fileID: 21300000, guid: 0fd1294f641e34328b9a172c6509dc58, type: 3}
+    - {fileID: 21300000, guid: 73d4ae62628274a03825a3b5baea7c28, type: 3}
+  - charaterName: Wool T-Shirt
+    materials:
+    - {fileID: 2100000, guid: 1eaf9571b74ea4ba0a05ac9bc58083c6, type: 2}
+    - {fileID: 2100000, guid: 69e6cc7132d3c47368f189242f6c92bf, type: 2}
+    - {fileID: 2100000, guid: 06c504b5511d84bad9a8282f030ebd7c, type: 2}
+    - {fileID: 2100000, guid: 09b90074313234c4c9d1d630e8dc200f, type: 2}
+    - {fileID: 2100000, guid: 822de45bd70ea49a7851cb5a33327a02, type: 2}
     - {fileID: 2100000, guid: 1684f4ec8c5b3a44a816a93d18717485, type: 2}
     materialSprites:
-    - {fileID: -2413806693520163455, guid: aa1f449ab27074fe29967940757ddb1f, type: 3}
-    - {fileID: 7482667652216324306, guid: 550fc1ac897854b82bd525d739db5513, type: 3}
-    - {fileID: 7482667652216324306, guid: 550fc1ac897854b82bd525d739db5513, type: 3}
-    - {fileID: 7482667652216324306, guid: 550fc1ac897854b82bd525d739db5513, type: 3}
-    - {fileID: 7482667652216324306, guid: 550fc1ac897854b82bd525d739db5513, type: 3}
-    - {fileID: 7482667652216324306, guid: 550fc1ac897854b82bd525d739db5513, type: 3}
-  - charaterName: Cloth2
+    - {fileID: 21300000, guid: 4cac2e15920764a19a07d9d4fd3bab53, type: 3}
+    - {fileID: 21300000, guid: c2e113284bd894004b6f2bef1a8ee49b, type: 3}
+    - {fileID: 21300000, guid: b23405826b56c49efbf81ccc74b06e14, type: 3}
+    - {fileID: 21300000, guid: 64805edcbad9140859745bb3b6aba8ff, type: 3}
+    - {fileID: 21300000, guid: 0475efa608c8d4ea1881b48aae358ffb, type: 3}
+    - {fileID: 21300000, guid: 57e8da676587c481aaa2cd5ada84689a, type: 3}
+  - charaterName: Party Dress
     materials:
-    - {fileID: 2100000, guid: 773de856a63bb964b9301bd9d57680bd, type: 2}
-    - {fileID: 2100000, guid: b7b33bda78c9949429e2aeb1cf834ef3, type: 2}
-    - {fileID: 2100000, guid: e3a2dc02f486e884ea348ea2df76c0a3, type: 2}
+    - {fileID: 2100000, guid: 652c4a95ccdc247da9b6001e213bc049, type: 2}
+    - {fileID: 2100000, guid: 81d14c98ead96456495260b7cbd3fafd, type: 2}
     materialSprites:
-    - {fileID: 7482667652216324306, guid: 550fc1ac897854b82bd525d739db5513, type: 3}
-    - {fileID: -2413806693520163455, guid: aa1f449ab27074fe29967940757ddb1f, type: 3}
-    - {fileID: 7482667652216324306, guid: 550fc1ac897854b82bd525d739db5513, type: 3}
-  - charaterName: Cloth3
+    - {fileID: 21300000, guid: 97a695f275e8a4e3287021a3c53b5027, type: 3}
+    - {fileID: 21300000, guid: 4af35fbaa55e0453eace9cfcf8a318be, type: 3}
+  - charaterName: Hoodie
     materials:
-    - {fileID: 2100000, guid: 1684f4ec8c5b3a44a816a93d18717485, type: 2}
+    - {fileID: 2100000, guid: 91b865a1962c04743b6dbb3a40f42237, type: 2}
+    - {fileID: 2100000, guid: 89889f29f452845d3bb378b9326bac46, type: 2}
     materialSprites:
-    - {fileID: -2413806693520163455, guid: aa1f449ab27074fe29967940757ddb1f, type: 3}
-  - charaterName: Cloth4
+    - {fileID: 21300000, guid: 33230305924e147f8982c18401ddf3b3, type: 3}
+    - {fileID: 21300000, guid: ed44a83ca9e8d47579e0d7c1e0b09e20, type: 3}
+  - charaterName: SDress
     materials:
-    - {fileID: 2100000, guid: ede34ac3615ae834cb60ab2b59f9cdad, type: 2}
-    - {fileID: 2100000, guid: 773de856a63bb964b9301bd9d57680bd, type: 2}
+    - {fileID: 2100000, guid: 53f5751956d374b2da3f65c844f12edb, type: 2}
+    - {fileID: 2100000, guid: 02f3686361d234943a915870323cc225, type: 2}
     materialSprites:
-    - {fileID: -2413806693520163455, guid: aa1f449ab27074fe29967940757ddb1f, type: 3}
-    - {fileID: 7482667652216324306, guid: 550fc1ac897854b82bd525d739db5513, type: 3}
+    - {fileID: 21300000, guid: 33230305924e147f8982c18401ddf3b3, type: 3}
+    - {fileID: 21300000, guid: ed44a83ca9e8d47579e0d7c1e0b09e20, type: 3}

@@ -135,7 +135,7 @@ public class DataReceiver : MonoBehaviour
         float hipMidY = (pointsData.data23.y + pointsData.data24.y)/-2;
         float hipMidZ = (pointsData.data23.z + pointsData.data24.z)/-2;
         keyPoints[14].transform.position = new Vector3(hipMidX, hipMidY, hipMidZ);
-
+        
         //torso middle - calculated by getting the mean value of axises of hip and shoulder mid point
         float torsoMidX = (hipMidX + shoulderMidX)/-2;
         float torsoMidY = (hipMidY + shoulderMidY)/-2;
