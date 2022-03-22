@@ -10,8 +10,8 @@ public class DataReceiver : MonoBehaviour
     //all the cloths come under this object
     public GameObject WholeBody; 
 
-    public Text textright;
-    public Text textleft;
+    // public Text textright;
+    // public Text textleft;
     //public assignmnet of keypoint data for changing clothes by raising the hand
     public float leftArm;
     public float rightArm;
@@ -22,7 +22,7 @@ public class DataReceiver : MonoBehaviour
     //distance object where the distance is passed and assigned by javascript
     Distace distData = new Distace();
 
-    SelectedCloth selectedId = new SelectedCloth();
+    //SelectedCloth selectedId = new SelectedCloth();
 
     //float for smoothning movement
     float speed = 0.01f;
@@ -32,23 +32,23 @@ public class DataReceiver : MonoBehaviour
     //distance of the user from device
     public static float distance;
 
-    float timeRemaining = 2f;
+    //float timeRemaining = 2f;
 
     //main objects containing colors and sizes
-    public GameObject colorCubesL;
-    public GameObject colorCubesR;
-    public GameObject sizeCubes;
-    public GameObject mainUICubes;
-    public GameObject arrowObj;
+    // public GameObject colorCubesL;
+    // public GameObject colorCubesR;
+    // public GameObject sizeCubes;
+    // public GameObject mainUICubes;
+    // public GameObject arrowObj;
 
     //------------------------------------------
-    public CharacterDatabase characterDB;
-    public Text nameText;
-    public GameObject[] models;
-    public GameObject[] materialObjects;
-    public GameObject[] colorButtons;
-    public static int currentIndex = 0;
-    public Slider timerslider;
+    // public CharacterDatabase characterDB;
+    // public Text nameText;
+    // public GameObject[] models;
+    // public GameObject[] materialObjects;
+    // public GameObject[] colorButtons;
+    // public static int currentIndex = 0;
+    // public Slider timerslider;
     //------------------------------
 
     public void dist(string scaleData){
@@ -59,8 +59,7 @@ public class DataReceiver : MonoBehaviour
 
     public void idReceiver(int idData){
         //selectedId = JsonUtility.FromJson<SelectedCloth>(idData);
-        currentIndex = idData;
-        textright.text = " point  "+idData;
+        //currentIndex = idData;
     }
 
     public void keypointData(string data)
@@ -159,36 +158,36 @@ public class DataReceiver : MonoBehaviour
         //keeping the size and color objects in same distance to user so they can reach out to them
         //Z-Axis of the hand and x,y axis of the shoulders are assigned
         //all the color changing objects
-        if(colorCubesL != null && colorCubesR != null)
-        {
-            colorCubesL.transform.position = new Vector3(-1*(pointsData.data11.x + (5*distance)), -1*pointsData.data11.y, pointsData.data15.z);
-            colorCubesR.transform.position = new Vector3(-1*(pointsData.data12.x - (5*distance)), -1*pointsData.data12.y, pointsData.data16.z);
-            colorCubesL.transform.localScale = new Vector3(distance, distance, distance);
-            colorCubesR.transform.localScale = new Vector3(distance, distance, distance);
-        }else{
-            return;
-        }
-        //all size changing objects
-        if(sizeCubes != null){
-            sizeCubes.transform.position = new Vector3(-1*(pointsData.data11.x + (5*distance)), -1*pointsData.data11.y, pointsData.data15.z);
-            sizeCubes.transform.localScale = new Vector3(distance, distance, distance);
-        }else{
-            return;
-        }
-        //all main UI containing objects
-        if(mainUICubes != null){
-            mainUICubes.transform.position = new Vector3(-1*(pointsData.data11.x + (5*distance)), -1*pointsData.data11.y, pointsData.data15.z);
-            mainUICubes.transform.localScale = new Vector3(distance, distance, distance);
-        }else{
-            return;
-        }
-        //arrow for back option object
-        if(arrowObj != null){
-            arrowObj.transform.position = new Vector3(-1*(pointsData.data11.x + (5*distance)), -1*(pointsData.data11.y  - (7*distance)), pointsData.data15.z);
-            arrowObj.transform.localScale = new Vector3(distance*4, distance*4, distance*4);
-        }else{
-            return;
-        }
+        // if(colorCubesL != null && colorCubesR != null)
+        // {
+        //     colorCubesL.transform.position = new Vector3(-1*(pointsData.data11.x + (5*distance)), -1*pointsData.data11.y, pointsData.data15.z);
+        //     colorCubesR.transform.position = new Vector3(-1*(pointsData.data12.x - (5*distance)), -1*pointsData.data12.y, pointsData.data16.z);
+        //     colorCubesL.transform.localScale = new Vector3(distance, distance, distance);
+        //     colorCubesR.transform.localScale = new Vector3(distance, distance, distance);
+        // }else{
+        //     return;
+        // }
+        // //all size changing objects
+        // if(sizeCubes != null){
+        //     sizeCubes.transform.position = new Vector3(-1*(pointsData.data11.x + (5*distance)), -1*pointsData.data11.y, pointsData.data15.z);
+        //     sizeCubes.transform.localScale = new Vector3(distance, distance, distance);
+        // }else{
+        //     return;
+        // }
+        // //all main UI containing objects
+        // if(mainUICubes != null){
+        //     mainUICubes.transform.position = new Vector3(-1*(pointsData.data11.x + (5*distance)), -1*pointsData.data11.y, pointsData.data15.z);
+        //     mainUICubes.transform.localScale = new Vector3(distance, distance, distance);
+        // }else{
+        //     return;
+        // }
+        // //arrow for back option object
+        // if(arrowObj != null){
+        //     arrowObj.transform.position = new Vector3(-1*(pointsData.data11.x + (5*distance)), -1*(pointsData.data11.y  - (7*distance)), pointsData.data15.z);
+        //     arrowObj.transform.localScale = new Vector3(distance*4, distance*4, distance*4);
+        // }else{
+        //     return;
+        // }
     }
 
     public class JsonObject{
@@ -223,102 +222,102 @@ public class DataReceiver : MonoBehaviour
 
 //-----------------------------------------------------------------------------------------
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        timerslider.maxValue = timeRemaining;
-        timerslider.value = timeRemaining;
+//     // Start is called before the first frame update
+//     void Start()
+//     {
+//         timerslider.maxValue = timeRemaining;
+//         timerslider.value = timeRemaining;
 
-        UpdateCharacter(currentIndex);
-    }
+//         UpdateCharacter(currentIndex);
+//     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        timerslider.value = timeRemaining;
-        if(timeRemaining == 2f){
-            timerslider.gameObject.SetActive(false);
-        }else{
-            timerslider.gameObject.SetActive(true);
-        }
-        if (UIManager.handAbility){
-            //if the left arm gose higher than the nose nextOption method callse
-            if (rightArm > nose)
-            {
-                timeRemaining -= Time.deltaTime;
-                if (timeRemaining <= 0)
-                {
-                    NextOption();
-                    timeRemaining = 2f;
-                }
-            }
-            //if the right arm gose higher than the nose backOption method callse
-            else if (leftArm > nose)
-            {
-                timeRemaining -= Time.deltaTime;
-                if (timeRemaining <= 0)
-                {
-                    BackOption();
-                    timeRemaining = 2f;
-                }
-            }
-            else if (rightArm > nose && leftArm > nose)
-            {
-                return;
-            }
-            else
-            {
-                timeRemaining = 2f;
-            }
-        }
-    }
-    //this method is to cahnge the elemnths (t=shirts) to right side
-    public void NextOption()
-    {
-        UpdateCharacter(currentIndex);
-        currentIndex++;
-        if (currentIndex == models.Length)
-            currentIndex = 0;
-        UpdateCharacter(currentIndex);
-    }
-    // this method is to change the elements (t-shirts) to left side
-    public void BackOption()
-    {
-        UpdateCharacter(currentIndex);
-        currentIndex--;
-        if (currentIndex == -1)
-            currentIndex = models.Length -1 ;
-        UpdateCharacter(currentIndex);
-    }
+//     // Update is called once per frame
+//     void Update()
+//     {
+//         timerslider.value = timeRemaining;
+//         if(timeRemaining == 2f){
+//             timerslider.gameObject.SetActive(false);
+//         }else{
+//             timerslider.gameObject.SetActive(true);
+//         }
+//         if (UIManager.handAbility){
+//             //if the left arm gose higher than the nose nextOption method callse
+//             if (rightArm > nose)
+//             {
+//                 timeRemaining -= Time.deltaTime;
+//                 if (timeRemaining <= 0)
+//                 {
+//                     NextOption();
+//                     timeRemaining = 2f;
+//                 }
+//             }
+//             //if the right arm gose higher than the nose backOption method callse
+//             else if (leftArm > nose)
+//             {
+//                 timeRemaining -= Time.deltaTime;
+//                 if (timeRemaining <= 0)
+//                 {
+//                     BackOption();
+//                     timeRemaining = 2f;
+//                 }
+//             }
+//             else if (rightArm > nose && leftArm > nose)
+//             {
+//                 return;
+//             }
+//             else
+//             {
+//                 timeRemaining = 2f;
+//             }
+//         }
+//     }
+//     //this method is to cahnge the elemnths (t=shirts) to right side
+//     public void NextOption()
+//     {
+//         UpdateCharacter(currentIndex);
+//         currentIndex++;
+//         if (currentIndex == models.Length)
+//             currentIndex = 0;
+//         UpdateCharacter(currentIndex);
+//     }
+//     // this method is to change the elements (t-shirts) to left side
+//     public void BackOption()
+//     {
+//         UpdateCharacter(currentIndex);
+//         currentIndex--;
+//         if (currentIndex == -1)
+//             currentIndex = models.Length -1 ;
+//         UpdateCharacter(currentIndex);
+//     }
 
-    private void UpdateCharacter(int SelectedOption)
-    {
-        //creating a new character for the selected index
-        Character character = characterDB.Getcharacter(SelectedOption);
-        //set the name of the selected index
-        nameText.text = character.charaterName;
+//     private void UpdateCharacter(int SelectedOption)
+//     {
+//         //creating a new character for the selected index
+//         Character character = characterDB.Getcharacter(SelectedOption);
+//         //set the name of the selected index
+//         nameText.text = character.charaterName;
 
-        //setting all gameobjects to set active false and the selected one to active
-        foreach (GameObject cloth in models)
-            cloth.SetActive(false);
+//         //setting all gameobjects to set active false and the selected one to active
+//         foreach (GameObject cloth in models)
+//             cloth.SetActive(false);
 
-        models[currentIndex].SetActive(true); 
+//         models[currentIndex].SetActive(true); 
 
-        //setting all gameobjects materials to set active false
-        foreach (GameObject mat in materialObjects)
-            mat.SetActive(false);
+//         //setting all gameobjects materials to set active false
+//         foreach (GameObject mat in materialObjects)
+//             mat.SetActive(false);
 
-        foreach (GameObject button in colorButtons)
-            button.gameObject.SetActive(false);
+//         foreach (GameObject button in colorButtons)
+//             button.gameObject.SetActive(false);
 
-        //setting the materials for the sepecific gameobjects and set active the no of materials
-        for (int i = 0; i < character.materials.Length; i++)
-        {
-            materialObjects[i].SetActive(true);
-            materialObjects[i].GetComponent<Renderer>().material = character.materials[i];
+//         //setting the materials for the sepecific gameobjects and set active the no of materials
+//         for (int i = 0; i < character.materials.Length; i++)
+//         {
+//             materialObjects[i].SetActive(true);
+//             materialObjects[i].GetComponent<Renderer>().material = character.materials[i];
 
-            colorButtons[i].SetActive(true);
-            colorButtons[i].GetComponent<Image>().sprite  = character.materialSprites[i];
-        }    
-    }
+//             colorButtons[i].SetActive(true);
+//             colorButtons[i].GetComponent<Image>().sprite  = character.materialSprites[i];
+//         }    
+//     }
 }

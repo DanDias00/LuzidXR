@@ -1,11 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+// using System.Collections;
+// using System.Collections.Generic;
+// using UnityEngine;
 
-[System.Serializable]
-public class Character
-{
-    public string charaterName;
-    public Material[] materials;
-    public Sprite[] materialSprites;
-}
+// [System.Serializable]
+// public class Character
+// {
+//     public string charaterName;
+//     public Material[] materials;
+//     public Sprite[] materialSprites;
+// }
