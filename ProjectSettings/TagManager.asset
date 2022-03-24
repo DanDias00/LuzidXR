@@ -4,13 +4,6 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - New tag
-  - Red
-  - Blue
-  - Green
-  - Pink
-  - Black
-  - Yellow
   - MaterialObj1
   - MaterialObj2
   - MaterialObj3
@@ -24,9 +17,9 @@ TagManager:
   - 
   - Water
   - UI
-  - cvb
   - 
   - 
+  - PostProcessing
   - 
   - 
   - 
@@ -53,10 +46,4 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
-    locked: 0
-  - name: Other
-    uniqueID: 2007060665
-    locked: 0
-  - name: UI
-    uniqueID: 2265048775
     locked: 0
