@@ -10,56 +10,56 @@ let products=[
 
     {
         id:2,
-        name:"Black Dress by Luizd-XR",
-        description:"Description of black dress can be added here",
+        name:"Light Grey T-shirt by Luizd-XR",
+        description:"Style of a basic crew neck tee that has a T shape of its body and sleeves,ideal for any body use.This style has short sleeves and a round neckline which is easy and comfortable for the wearer. T-shirts are generally made out of comfortable, light weight and stretchy fabric",
         image:"assets/ash.png",
         price: "LKR 2,000"
 
     },
     {
         id:3,
-        name:"Blue dress by Luzid-XR",
-        description:"Description of the blue dress will be mentioned here",
+        name:"Grey T-shirt by Luzid-XR",
+        description:"Style of a basic crew neck tee that has a T shape of its body and sleeves,ideal for any body use.This style has short sleeves and a round neckline which is easy and comfortable for the wearer. T-shirts are generally made out of comfortable, light weight and stretchy fabric",
         image:"assets/dark gray.jpg",
         price: "LKR 1,000"
 
     },
     {
         id:4,
-        name:"Blue dress by Luzid-XR",
-        description:"Description of the blue dress will be mentioned here",
+        name:"Green T-shirt by Luzid-XR",
+        description:"Style of a basic crew neck tee that has a T shape of its body and sleeves,ideal for any body use.This style has short sleeves and a round neckline which is easy and comfortable for the wearer. T-shirts are generally made out of comfortable, light weight and stretchy fabric",
         image:"assets/Green .jpg",
         price: "LKR 3,900"
 
     },
     {
         id:5,
-        name:"Blue dress by Luzid-XR",
-        description:"Description of the blue dress will be mentioned here",
+        name:"White T-shirt by Luzid-XR",
+        description:"Style of a basic crew neck tee that has a T shape of its body and sleeves,ideal for any body use.This style has short sleeves and a round neckline which is easy and comfortable for the wearer. T-shirts are generally made out of comfortable, light weight and stretchy fabric",
         image:"assets/white.jpg",
         price: "LKR 10,000"
 
     },
     {
         id:6,
-        name:"Blue dress by Luzid-XR",
-        description:"Description of the blue dress will be mentioned here",
+        name:"Brown T-shirt by Luzid-XR",
+        description:"Style of a basic crew neck tee that has a T shape of its body and sleeves,ideal for any body use.This style has short sleeves and a round neckline which is easy and comfortable for the wearer. T-shirts are generally made out of comfortable, light weight and stretchy fabric",
         image:"assets/Brown.jpg",
         price: "LKR 6,500"
 
     },
     {
         id:7,
-        name:"Blue dress by Luzid-XR",
-        description:"Description of the blue dress will be mentioned here",
+        name:"Maroon by Luzid-XR",
+        description:"Style of a basic crew neck tee that has a T shape of its body and sleeves,ideal for any body use.This style has short sleeves and a round neckline which is easy and comfortable for the wearer. T-shirts are generally made out of comfortable, light weight and stretchy fabric",
         image:"assets/purple.jpg",
         price: "LKR 7,250"
 
     },
     {
         id:8,
-        name:"Blue dress by Luzid-XR",
-        description:"Description of the blue dress will be mentioned here",
+        name:"Pink by Luzid-XR",
+        description:"Style of a basic crew neck tee that has a T shape of its body and sleeves,ideal for any body use.This style has short sleeves and a round neckline which is easy and comfortable for the wearer. T-shirts are generally made out of comfortable, light weight and stretchy fabric",
         image:"assets/Pink.jpg",
         price: "LKR 3,300"
 

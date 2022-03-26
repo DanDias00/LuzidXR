@@ -85,10 +85,10 @@
   }
 
   .about-section {
-    padding: 50px;
+    padding: 30px;
     font-size: 23px;
     text-align: center;
-    /*background-color: #000000;*/
+    max-width: 100%;  
     color: black;
   }
 
@@ -96,6 +96,7 @@
     padding: 0 16px;
     background-color: #070505;
   }
+
 
   .container::after, .row::after {
     content: "";
@@ -273,7 +274,7 @@
   }
 
   p {
-    color: rgb(0, 0, 0)
+   color: #fff;
   }
 
   .btn {
