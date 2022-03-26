@@ -295,7 +295,7 @@ public class DataReceiver : MonoBehaviour
         //creating a new character for the selected index
         Character character = characterDB.Getcharacter(SelectedOption);
         //set the name of the selected index
-        nameText.text = character.charaterName;
+        //nameText.text = character.charaterName;
 
         //setting all gameobjects to set active false and the selected one to active
         foreach (GameObject cloth in models)
