@@ -1,9 +1,9 @@
 window.addEventListener("load", function () {
     let url = new URLSearchParams(this.location.search);
     let id = url.get("productId");
-   // console.log(id);
 
 
+    //to retrieve the product details
     for (product of products) {
         if (product.id == id) {
 
@@ -11,8 +11,6 @@ window.addEventListener("load", function () {
             this.document.getElementById("p_des").innerHTML += product.description;
             this.document.getElementById("p_price").innerHTML += product.price;
             this.document.getElementById("myImg").src = product.image;
-
-
         }
     }
 }
@@ -20,11 +18,8 @@ window.addEventListener("load", function () {
 );
 
 // create method to pass to unity
-function sendToUnity(){
+function sendToUnity() {
     let url = new URLSearchParams(this.location.search);
     let id = url.get("productId");
-    window.location="unity.html";
-    console.log(id);
-    GlobalUnityInstance.SendMessage("DataReceiver","idReceiver", JSON.stringify(id));   
-   
-  }
+    window.location.href = "https://chanithas.github.io/LuzidXR/?val=" + id + "";
+}

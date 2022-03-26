@@ -8,9 +8,11 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="css/aboutUs.css" class="css">
   <link rel="stylesheet" href="css/nav.css">
+  <link rel="stylesheet" href="css/shop.css">
   <script src="js/template.js"></script>
-  <script src="js/product.js"></script>
+  <script src="js/product.js" defer></script>
   <script src="js/common.js"></script>
+  <script src="../blazepose.js"></script>
   <title>Product details</title>
 </head>
 
@@ -44,7 +46,7 @@
       <p style="color: rgb(0, 0, 0);" id="p_des"></p><br />
 
       <h4 style="color: rgb(0, 0, 0); font-size: 25px;" id="p_price">Price :</h4>
-      <button onclick="sendToUnity()">Try out virtually</button>
+      <button class="addToCart" onclick="sendToUnity()">Try out virtually</button>
       <div class="radio-toolbar">
         <input type="radio" id="xs" name="radioFruit" value="xs">
         <label for="xs">XS</label>
